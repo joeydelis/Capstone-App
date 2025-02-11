@@ -64,4 +64,28 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Pages\BluetoothConnectionPage.xaml.cs">
+	    <DependentUpon>BluetoothConnectionPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\TimerPage.xaml.cs">
+	    <DependentUpon>TimerPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\StrengthPage.xaml.cs">
+	    <DependentUpon>StrengthPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\BluetoothConnectionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\TimerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\StrengthPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
