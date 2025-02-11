@@ -8,17 +8,18 @@
         {
             InitializeComponent();
         }
-
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnBluetoothPageClicked(object sender, EventArgs e)
         {
-            count++;
+            await Shell.Current.GoToAsync("/BluetoothConnectionPage");
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private async void OnStrengthPageClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("/StrengthPage");
+        }
+        private async void OnTimerPageClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("/TimerPage");
         }
     }
 
