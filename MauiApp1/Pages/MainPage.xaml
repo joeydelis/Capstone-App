@@ -1,12 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.MainPage">
+             x:Class="MauiApp1.MainPage"
+             Style="{DynamicResource DarkPageStyle}">
+
 
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
+            <Grid Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <BoxView Grid.Column="0" WidthRequest="20" HeightRequest="20" Color="Green" VerticalOptions="Center" CornerRadius="10"/>
+                <StackLayout Grid.Column="1" Padding="10" BackgroundColor="LightGray">
+                    <Label Text="Status: Online" FontSize="20" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Grid>
             <Button
                 x:Name="BluetoothPage"
                 Text="Bluetooth Configuration"
@@ -16,11 +29,13 @@
                 x:Name="DeviceStrength"
                 Text="Configure Device Strength"
                 Clicked="OnStrengthPageClicked"
+                IsEnabled="False"
                 />
             <Button
                 x:Name="DeviceTimer"
                 Text="Configure Device Timer"
                 Clicked="OnTimerPageClicked"
+                IsEnabled="False"
                 />
         </VerticalStackLayout>
     </ScrollView>

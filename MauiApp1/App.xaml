@@ -9,6 +9,15 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <!-- Light Mode Resources -->
+            <Style TargetType="ContentPage" x:Key="LightPageStyle">
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+
+            <!-- Dark Mode Resources -->
+            <Style TargetType="ContentPage" x:Key="DarkPageStyle">
+                <Setter Property="BackgroundColor" Value="Black"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
