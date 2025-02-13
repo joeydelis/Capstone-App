@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
              x:Class="MauiApp1.Pages.StrengthPage"
              Title="StrengthPage"
-             Style="{DynamicResource DarkPageStyle}">
-    <VerticalStackLayout>
+             Style="{DynamicResource LightPageStyle}">
+    <VerticalStackLayout Padding="20">
         <Label 
             Text="For device strength"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <sf:SfSlider ShowLabels="True"
+                     Minimum="0"
+                     Maximum="10"
+                     Interval="1"
+                     ShowTicks="True"
+                     Value="0"
+                     ValueChanged="SfSlider_ValueChanged"></sf:SfSlider>
+        
     </VerticalStackLayout>
 </ContentPage>

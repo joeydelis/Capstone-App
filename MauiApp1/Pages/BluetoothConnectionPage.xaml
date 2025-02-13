@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Pages.BluetoothConnectionPage"
              Title="BluetoothConnectionPage"
-             Style="{DynamicResource DarkPageStyle}">
+             Style="{DynamicResource LightPageStyle}">
     <VerticalStackLayout>
         <Label 
             Text="For Bluetooth Connection"

@@ -29,13 +29,13 @@
                 x:Name="DeviceStrength"
                 Text="Configure Device Strength"
                 Clicked="OnStrengthPageClicked"
-                IsEnabled="False"
+                IsEnabled="True"
                 />
             <Button
                 x:Name="DeviceTimer"
                 Text="Configure Device Timer"
                 Clicked="OnTimerPageClicked"
-                IsEnabled="False"
+                IsEnabled="True"
                 />
         </VerticalStackLayout>
     </ScrollView>
