@@ -12,4 +12,9 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+    <ShellContent
+        Title="BLE Scanner"
+        ContentTemplate="{DataTemplate local:BleScannerPage}"
+        Route="BleScannerPage" />
+
 </Shell>
