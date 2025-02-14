@@ -6,38 +6,110 @@
 
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Grid Padding="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+        <StackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto"
+              ColumnDefinitions="*, *"
+              ColumnSpacing="10"
+              RowSpacing="20"
+              VerticalOptions="CenterAndExpand" 
+              HorizontalOptions="CenterAndExpand">
 
+            <!-- INDICATOR BOX -->
+            <Border x:Name="indicatorBox"
+                BackgroundColor="LightBlue"
+                Stroke="DarkBlue"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                WidthRequest="100"
+                HeightRequest="100"
+                Grid.Row="0"
+                Grid.Column="0"
+                Padding="20"
+                HorizontalOptions="CenterAndExpand">
                 <BoxView Grid.Column="0" WidthRequest="20" HeightRequest="20" Color="Green" VerticalOptions="Center" CornerRadius="10"/>
-                <StackLayout Grid.Column="1" Padding="10" BackgroundColor="LightGray">
-                    <Label Text="Status: Online" FontSize="20" VerticalOptions="CenterAndExpand" />
-                </StackLayout>
-            </Grid>
-            <Button
-                x:Name="BluetoothPage"
-                Text="Bluetooth Configuration"
-                Clicked="OnBluetoothPageClicked"
-            />
-            <Button
-                x:Name="DeviceStrength"
-                Text="Configure Device Strength"
-                Clicked="OnStrengthPageClicked"
-                IsEnabled="True"
-                />
-            <Button
-                x:Name="DeviceTimer"
-                Text="Configure Device Timer"
-                Clicked="OnTimerPageClicked"
-                IsEnabled="True"
-                />
-        </VerticalStackLayout>
-    </ScrollView>
+            </Border>
 
+            <!-- CONFIGURE BUTTON BOX -->
+            <Border x:Name="configureBox"
+                    BackgroundColor="LightBlue"
+                    Stroke="DarkBlue"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    Padding="20"
+                    HeightRequest="100"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                <Label Text="Connected" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBluetoothPageClicked"/>
+                </Border.GestureRecognizers>
+                </Border>
+
+            <!-- STRENGTH BOX -->
+            <Border x:Name="strengthBox"
+                    BackgroundColor="LightBlue"
+                    Stroke="DarkBlue"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Padding="20"
+                    HorizontalOptions="CenterAndExpand">
+                <Label x:Name="StrengthLabel" Text="NA" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnStrengthPageClicked"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+            <!-- TIMER BOX -->
+            <Border x:Name="timerBox"
+                    BackgroundColor="LightBlue"
+                    Stroke="DarkBlue"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Padding="20"
+                    HorizontalOptions="CenterAndExpand">
+                <Label Text="Timer Box" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
+                </Border.GestureRecognizers>
+                </Border>
+        </Grid>
+        <!-- TIME DISPLAY BOX -->
+            <Border x:Name="displayBox"
+                BackgroundColor="LightBlue"
+                Stroke="DarkBlue"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                HeightRequest="100"
+                Grid.Row="2"
+                Grid.Column="1"
+                Padding="20"
+                HorizontalOptions="FillAndExpand">
+                <Label x:Name="TimeLabel" Text="00:00" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Border>
+            
+            <!-- START BOX -->
+            <Border x:Name="startBox"
+                BackgroundColor="LightBlue"
+                Stroke="DarkBlue"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                HeightRequest="100"
+                Grid.Row="3"
+                Grid.Column="0"
+                Padding="20"
+                HorizontalOptions="FillAndExpand">
+                <Label Text="Start Box" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Border>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

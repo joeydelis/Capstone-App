@@ -1,12 +1,27 @@
-﻿namespace MauiApp1
+﻿using System.Security.AccessControl;
+using MauiApp1.Classes;
+namespace MauiApp1
 {
     public partial class MainPage : ContentPage
     {
+        private System.Timers.Timer _timer;
         int count = 0;
 
         public MainPage()
         {
             InitializeComponent();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (Globals.DeviceStrength != -1)
+            {
+                StrengthLabel.Text = Globals.DeviceStrength.ToString();
+            }
+            if (Globals.DeviceMinutes != -1 && Globals.DeviceSeconds != -1)
+            {
+                TimeLabel.Text =  Globals.DeviceMinutes + ":" + Globals.DeviceSeconds;
+            }
         }
         private async void OnBluetoothPageClicked(object sender, EventArgs e)
         {

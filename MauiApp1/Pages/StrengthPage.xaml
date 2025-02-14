@@ -10,7 +10,9 @@
             Text="For device strength"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <sf:SfSlider ShowLabels="True"
+        <sf:SfSlider 
+                     x:Name="StrengthSlider"
+                     ShowLabels="True"
                      Minimum="0"
                      Maximum="10"
                      Interval="1"
