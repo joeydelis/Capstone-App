@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.MainPage"
-             Style="{DynamicResource LightPageStyle}">
+             xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
+             Style="{DynamicResource DarkPageStyle}">
 
 
     <ScrollView>
-        <StackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
         <Grid RowDefinitions="Auto, Auto, Auto, Auto"
-              ColumnDefinitions="*, *"
+              ColumnDefinitions="*, *, *, *"
               ColumnSpacing="10"
               RowSpacing="20"
               VerticalOptions="CenterAndExpand" 
@@ -16,8 +17,8 @@
 
             <!-- INDICATOR BOX -->
             <Border x:Name="indicatorBox"
-                BackgroundColor="LightBlue"
-                Stroke="DarkBlue"
+                BackgroundColor="#262626"
+                Stroke="#262626"
                 StrokeThickness="2"
                 StrokeShape="RoundRectangle 10,10,10,10"
                 WidthRequest="100"
@@ -26,22 +27,36 @@
                 Grid.Column="0"
                 Padding="20"
                 HorizontalOptions="CenterAndExpand">
-                <BoxView Grid.Column="0" WidthRequest="20" HeightRequest="20" Color="Green" VerticalOptions="Center" CornerRadius="10"/>
-            </Border>
+                    <StackLayout>
+                        <Label Text="&#xf00c;"
+    FontFamily="FontAwesomeSolid"
+    FontSize="36"
+    TextColor="LightGreen"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"/>
+                        <Label Text="CONNECTED"
+FontFamily="FontAwesomeSolid"
+FontSize="7"
+TextColor="LightGreen"
+HorizontalOptions="Center"
+VerticalOptions="Center"/>
+                    </StackLayout>
+                </Border>
 
             <!-- CONFIGURE BUTTON BOX -->
             <Border x:Name="configureBox"
-                    BackgroundColor="LightBlue"
-                    Stroke="DarkBlue"
+                    BackgroundColor="#262626"
+Stroke="#262626"
                     StrokeThickness="2"
                     StrokeShape="RoundRectangle 10,10,10,10"
                     Padding="20"
                     HeightRequest="100"
                     Grid.Row="0"
                     Grid.Column="1"
+                    Grid.ColumnSpan="3"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="FillAndExpand">
-                <Label Text="Connected" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Text="&#xf013; CONFIGURE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
                 <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnBluetoothPageClicked"/>
                 </Border.GestureRecognizers>
@@ -49,34 +64,51 @@
 
             <!-- STRENGTH BOX -->
             <Border x:Name="strengthBox"
-                    BackgroundColor="LightBlue"
-                    Stroke="DarkBlue"
+                    BackgroundColor="#262626"
+Stroke="#262626"
                     StrokeThickness="2"
                     StrokeShape="RoundRectangle 10,10,10,10"
-                    WidthRequest="100"
                     HeightRequest="100"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Padding="20"
-                    HorizontalOptions="CenterAndExpand">
-                <Label x:Name="StrengthLabel" Text="NA" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Border.GestureRecognizers>
+                    Grid.ColumnSpan="2"
+                    Padding="5"
+                    HorizontalOptions="FillAndExpand">
+                    <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" BackgroundColor="Transparent">
+                        <gauge:SfRadialGauge.Axes>
+                            <gauge:RadialAxis Minimum="0"
+                                              Maximum="10"
+                                              ShowLabels="False"
+                                              ShowTicks="False"
+                                >
+                                <gauge:RadialAxis.AxisLineStyle>
+                                    <gauge:RadialLineStyle
+                                        CornerStyle="BothCurve"
+                                        Fill="#121212"/>
+                                </gauge:RadialAxis.AxisLineStyle>
+                                <gauge:RadialAxis.Pointers>
+                                    <gauge:RangePointer x:Name="StrengthPointer" Value="0" Fill="LightGreen" CornerStyle="BothCurve"/>
+                                </gauge:RadialAxis.Pointers>
+                            </gauge:RadialAxis>
+                        </gauge:SfRadialGauge.Axes>
+                    </gauge:SfRadialGauge>
+                    <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnStrengthPageClicked"/>
                 </Border.GestureRecognizers>
             </Border>
 
             <!-- TIMER BOX -->
             <Border x:Name="timerBox"
-                    BackgroundColor="LightBlue"
-                    Stroke="DarkBlue"
+                    BackgroundColor="#262626"
+Stroke="#262626"
                     StrokeThickness="2"
                     StrokeShape="RoundRectangle 10,10,10,10"
-                    WidthRequest="100"
                     HeightRequest="100"
                     Grid.Row="1"
-                    Grid.Column="1"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
                     Padding="20"
-                    HorizontalOptions="CenterAndExpand">
+                    HorizontalOptions="FillAndExpand">
                 <Label Text="Timer Box" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
@@ -85,8 +117,8 @@
         </Grid>
         <!-- TIME DISPLAY BOX -->
             <Border x:Name="displayBox"
-                BackgroundColor="LightBlue"
-                Stroke="DarkBlue"
+                BackgroundColor="#262626"
+Stroke="#262626"
                 StrokeThickness="2"
                 StrokeShape="RoundRectangle 10,10,10,10"
                 HeightRequest="100"
@@ -99,8 +131,8 @@
             
             <!-- START BOX -->
             <Border x:Name="startBox"
-                BackgroundColor="LightBlue"
-                Stroke="DarkBlue"
+                BackgroundColor="#262626"
+Stroke="#262626"
                 StrokeThickness="2"
                 StrokeShape="RoundRectangle 10,10,10,10"
                 HeightRequest="100"
@@ -110,6 +142,6 @@
                 HorizontalOptions="FillAndExpand">
                 <Label Text="Start Box" HorizontalOptions="Center" VerticalOptions="Center"/>
             </Border>
-        </StackLayout>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

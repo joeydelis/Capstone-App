@@ -16,7 +16,7 @@
 
             <!-- Dark Mode Resources -->
             <Style TargetType="ContentPage" x:Key="DarkPageStyle">
-                <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="#121212"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

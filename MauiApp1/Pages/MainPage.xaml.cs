@@ -16,7 +16,7 @@ namespace MauiApp1
             base.OnAppearing();
             if (Globals.DeviceStrength != -1)
             {
-                StrengthLabel.Text = Globals.DeviceStrength.ToString();
+                StrengthPointer.Value = Globals.DeviceStrength;
             }
             if (Globals.DeviceMinutes != -1 && Globals.DeviceSeconds != -1)
             {
