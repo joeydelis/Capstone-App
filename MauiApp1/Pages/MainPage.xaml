@@ -63,18 +63,18 @@ Stroke="#262626"
                 </Border>
 
             <!-- STRENGTH BOX -->
-            <Border x:Name="strengthBox"
+                <Border x:Name="strengthBox"
                     BackgroundColor="#262626"
 Stroke="#262626"
                     StrokeThickness="2"
                     StrokeShape="RoundRectangle 10,10,10,10"
                     HeightRequest="100"
                     Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="1"
                     Padding="5"
                     HorizontalOptions="FillAndExpand">
-                    <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" BackgroundColor="Transparent">
+                    <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent">
                         <gauge:SfRadialGauge.Axes>
                             <gauge:RadialAxis Minimum="0"
                                               Maximum="10"
@@ -89,6 +89,13 @@ Stroke="#262626"
                                 <gauge:RadialAxis.Pointers>
                                     <gauge:RangePointer x:Name="StrengthPointer" Value="0" Fill="LightGreen" CornerStyle="BothCurve"/>
                                 </gauge:RadialAxis.Pointers>
+                                <gauge:RadialAxis.Annotations>
+                                    <gauge:GaugeAnnotation>
+                                        <gauge:GaugeAnnotation.Content>
+                                            <Label x:Name="StrengthValue" FontFamily="FontAwesomeSolid" FontSize="13" Text="0" TextColor="LightGreen"/>
+                                        </gauge:GaugeAnnotation.Content>
+                                    </gauge:GaugeAnnotation>
+                                </gauge:RadialAxis.Annotations>
                             </gauge:RadialAxis>
                         </gauge:SfRadialGauge.Axes>
                     </gauge:SfRadialGauge>
@@ -105,12 +112,12 @@ Stroke="#262626"
                     StrokeShape="RoundRectangle 10,10,10,10"
                     HeightRequest="100"
                     Grid.Row="1"
-                    Grid.Column="2"
-                    Grid.ColumnSpan="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
                     Padding="20"
                     HorizontalOptions="FillAndExpand">
-                <Label Text="Timer Box" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Border.GestureRecognizers>
+                    <Label Text="&#xf017; SET TIMER" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                    <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
                 </Border.GestureRecognizers>
                 </Border>
@@ -126,7 +133,14 @@ Stroke="#262626"
                 Grid.Column="1"
                 Padding="20"
                 HorizontalOptions="FillAndExpand">
-                <Label x:Name="TimeLabel" Text="00:00" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
+                            <Span x:Name="TimeLabel" Text="00 min 00 sec" FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </Border>
             
             <!-- START BOX -->
@@ -140,7 +154,7 @@ Stroke="#262626"
                 Grid.Column="0"
                 Padding="20"
                 HorizontalOptions="FillAndExpand">
-                <Label Text="Start Box" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="ENABLE DEVICE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
             </Border>
         </VerticalStackLayout>
     </ScrollView>
