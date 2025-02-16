@@ -54,6 +54,7 @@
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
+		<MauiFont Include="Resources\Fonts\FontAwesomeSolid.otf"/>
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
@@ -78,6 +79,15 @@
 	  <Compile Update="Pages\StrengthPage.xaml.cs">
 	    <DependentUpon>StrengthPage.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiFont Update="C:\Users\Quinton\.nuget\packages\syncfusion.maui.core\28.2.5\buildTransitive\..\buildTransitive\Resources\Fonts\MauiMaterialAssets.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Update="Resources\Fonts\FontAwesomeSolid.otf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
 	</ItemGroup>
 
 	<ItemGroup>
