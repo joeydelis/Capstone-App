@@ -5,9 +5,27 @@
              Title="BluetoothConnectionPage"
              Style="{DynamicResource LightPageStyle}">
     <VerticalStackLayout>
-        <Label 
-            Text="For Bluetooth Connection"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Button Text="Scan for Devices" Command="{Binding StartScanCommand}"/>
+        <ListView x:Name="BleListView" ItemsSource="{Binding Devices}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding ="2.5" Spacing="10">
+                            <Label Text="{Binding Name}" 
+								   VerticalOptions="Center" 
+								   FontSize="16" 
+								   WidthRequest="200"/>
+
+                            <Button Text="{Binding ButtonText}" 
+									Command="{Binding BindingContext.ConnectCommand, Source={x:Reference BleListView}}" 
+									CommandParameter="{Binding}" 
+									FontSize="14"
+                                    Padding="10"
+                                    HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </VerticalStackLayout>
 </ContentPage>
