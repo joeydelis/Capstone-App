@@ -21,7 +21,15 @@ namespace MauiApp1
             }
             if (Globals.DeviceMinutes != -1 && Globals.DeviceSeconds != -1)
             {
-                TimeLabel.Text = Globals.DeviceMinutes + " min " + Globals.DeviceSeconds + " sec";
+                TimeLabel.Text = Globals.DeviceMinutes + " hr " + Globals.DeviceSeconds + " min";
+            }
+            if (Globals.DeviceStrength >= 10)
+            {
+                StrengthValue.FontSize = 11;
+            }
+            else
+            {
+                StrengthValue.FontSize = 13;
             }
         }
         private async void OnBluetoothPageClicked(object sender, EventArgs e)

@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
              x:Class="MauiApp1.Pages.TimerPage"
              Title="TimerPage"
-             Style="{DynamicResource LightPageStyle}">
-    <VerticalStackLayout>
-        <Label 
-            Text="For device timer"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Picker
-            x:Name="MinutesPicker"
-            Title="Minutes"
-            VerticalOptions="CenterAndExpand">
-            
-        </Picker>
-        <Picker
-            x:Name="SecondsPicker"
-            Title="Seconds"
-            VerticalOptions="CenterAndExpand">
-
-        </Picker>
+             Style="{DynamicResource DarkPageStyle}">
+    <VerticalStackLayout Spacing="10" Padding="10">
+        <Border BackgroundColor="#262626"
+                Stroke="#262626"
+                StrokeThickness="2"
+                Padding="20"
+                StrokeShape="RoundRectangle 10,10,10,10">
+            <picker:SfTimePicker x:Name="TimePicker"
+                                 TextDisplayMode="Fade"
+                                 Format="H_mm"
+                                 MaximumTime="1:00:0"
+                                 BackgroundColor="#262626"
+                                 SelectionChanged="OnPickerChanged">
+                <picker:SfTimePicker.ColumnHeaderView>
+                    <picker:TimePickerColumnHeaderView Background="#262626">
+                        <picker:TimePickerColumnHeaderView.TextStyle>
+                            <picker:PickerTextStyle TextColor="White"/>
+                        </picker:TimePickerColumnHeaderView.TextStyle>
+                    </picker:TimePickerColumnHeaderView>
+                </picker:SfTimePicker.ColumnHeaderView>
+                <picker:SfTimePicker.SelectedTextStyle >
+                    <picker:PickerTextStyle FontSize="15" TextColor="White"/>
+                </picker:SfTimePicker.SelectedTextStyle>
+            </picker:SfTimePicker>
+        </Border>
+        <Label Text=" " VerticalOptions="FillAndExpand" Padding="50"/>
         <Button Text="Set Timer"
                 Clicked="OnSetTimerClicked"
-                VerticalOptions="CenterAndExpand" />
+                VerticalOptions="EndAndExpand"
+                BackgroundColor="#262626"/>
     </VerticalStackLayout>
 </ContentPage>

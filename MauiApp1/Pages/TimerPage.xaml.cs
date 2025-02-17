@@ -1,52 +1,38 @@
 using System.Diagnostics;
 using MauiApp1.Classes;
+using Syncfusion.Maui.Picker;
 
 namespace MauiApp1.Pages;
 
 public partial class TimerPage : ContentPage
 {
+    private int _internalHour = 1;
+    private int _internalMinute = 0;
 	public TimerPage()
 	{
 		InitializeComponent();
-        InitializePickers();
 	}
     protected override void OnAppearing()
     {
         base.OnAppearing();
         if (Globals.DeviceMinutes != -1 && Globals.DeviceSeconds != -1)
         {
-            Debug.WriteLine("Writing new time.");
-            SecondsPicker.SelectedItem = Globals.DeviceSeconds.ToString();
-            MinutesPicker.SelectedItem = Globals.DeviceMinutes.ToString();
+            TimePicker.SelectedTime = new TimeSpan(Globals.DeviceMinutes, Globals.DeviceSeconds, 0);
         }
     }
-    private void InitializePickers()
+    private void OnPickerChanged(object sender, TimePickerSelectionChangedEventArgs e)
     {
-        List<string> minutes = new List<string>();
-        for (int i = 0; i < 60; i++)
-        {
-            minutes.Add(i.ToString("D2"));
-        }
-        MinutesPicker.ItemsSource = minutes;
-
-        List<string> seconds = new List<string>();
-        for (int i = 0; i < 60; i++)
-        {
-            seconds.Add(i.ToString("D2"));
-        }
-        SecondsPicker.ItemsSource = seconds;
+        TimeSpan time = e.NewValue.Value;
+        _internalHour = time.Hours;
+        _internalMinute = time.Minutes;
     }
-
     private void OnSetTimerClicked(object sender, EventArgs e)
     {
-        string selectedMinutes = MinutesPicker.SelectedItem?.ToString();
-        string selectedSeconds = SecondsPicker.SelectedItem?.ToString();
-
-        if (selectedMinutes != null && selectedSeconds != null)
+        if (_internalHour != -1 && _internalMinute != -1)
         {
-            Globals.DeviceMinutes = int.Parse(selectedMinutes);
-            Globals.DeviceSeconds = int.Parse(selectedSeconds);
-            DisplayAlert("Timer Set", $"Timer set for {selectedMinutes} minutes and {selectedSeconds} seconds", "OK");
+            Globals.DeviceMinutes = _internalHour;
+            Globals.DeviceSeconds = _internalMinute;
+            DisplayAlert("Timer Set", $"Timer set for {_internalHour} hour(s) and {_internalMinute} minutes", "OK");
         }
         else
         {

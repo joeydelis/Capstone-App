@@ -4,12 +4,8 @@
              xmlns:sf="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
              x:Class="MauiApp1.Pages.StrengthPage"
              Title="StrengthPage"
-             Style="{DynamicResource LightPageStyle}">
-    <VerticalStackLayout Padding="20">
-        <Label 
-            Text="For device strength"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Style="{DynamicResource DarkPageStyle}">
+    <VerticalStackLayout Padding="10" Spacing="10">
         <sf:SfSlider 
                      x:Name="StrengthSlider"
                      ShowLabels="True"
@@ -18,7 +14,30 @@
                      Interval="1"
                      ShowTicks="True"
                      Value="0"
-                     ValueChanged="SfSlider_ValueChanged"></sf:SfSlider>
-        
+                     ValueChanged="SfSlider_ValueChanged">
+            <sf:SfSlider.TrackStyle>
+                <sf:SliderTrackStyle ActiveFill="LightGreen"
+                                     InactiveFill="#779977"
+                                     ActiveSize="10"
+                                     InactiveSize="8"/>
+            </sf:SfSlider.TrackStyle>
+            <sf:SfSlider.ThumbStyle>
+                <sf:SliderThumbStyle Radius="15"
+                                     Fill="GhostWhite"/>
+            </sf:SfSlider.ThumbStyle>
+            <sf:SfSlider.MajorTickStyle>
+                <sf:SliderTickStyle ActiveFill="LightGreen"
+                                    InactiveFill="#779977"/>
+            </sf:SfSlider.MajorTickStyle>
+            <sf:SfSlider.LabelStyle>
+                <sf:SliderLabelStyle ActiveTextColor="White"
+                                     InactiveTextColor="GhostWhite"/>
+            </sf:SfSlider.LabelStyle>
+        </sf:SfSlider>
+        <Label Text=" " VerticalOptions="FillAndExpand" Padding="50"/>
+        <Button Text="Set Strength"
+        VerticalOptions="EndAndExpand"
+        BackgroundColor="#262626"
+        Pressed="OnStrengthButtonPressed"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -8,10 +8,10 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto"
+        <Grid RowDefinitions="Auto, Auto"
               ColumnDefinitions="*, *, *, *"
               ColumnSpacing="10"
-              RowSpacing="20"
+              RowSpacing="10"
               VerticalOptions="CenterAndExpand" 
               HorizontalOptions="CenterAndExpand">
 
@@ -92,7 +92,7 @@ Stroke="#262626"
                                 <gauge:RadialAxis.Annotations>
                                     <gauge:GaugeAnnotation>
                                         <gauge:GaugeAnnotation.Content>
-                                            <Label x:Name="StrengthValue" FontFamily="FontAwesomeSolid" FontSize="13" Text="0" TextColor="LightGreen"/>
+                                            <Label x:Name="StrengthValue" FontFamily="FontAwesomeSolid" FontSize="11" Text="0" TextColor="LightGreen"/>
                                         </gauge:GaugeAnnotation.Content>
                                     </gauge:GaugeAnnotation>
                                 </gauge:RadialAxis.Annotations>
@@ -137,7 +137,7 @@ Stroke="#262626"
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
-                            <Span x:Name="TimeLabel" Text="00 min 00 sec" FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
+                            <Span x:Name="TimeLabel" Text="00 hr 00 min" FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>

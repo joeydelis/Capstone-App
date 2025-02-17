@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Pages.BluetoothConnectionPage"
              Title="BluetoothConnectionPage"
-             Style="{DynamicResource LightPageStyle}">
+             Style="{DynamicResource DarkPageStyle}">
     <VerticalStackLayout>
-        <Button Text="Scan for Devices" Command="{Binding StartScanCommand}"/>
+        <Button Text="Scan for Devices" Command="{Binding StartScanCommand}" BackgroundColor="#262626"/>
         <ListView x:Name="BleListView" ItemsSource="{Binding Devices}">
             <ListView.ItemTemplate>
                 <DataTemplate>
