@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.MainPage"
              xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
-             Style="{DynamicResource DarkPageStyle}">
+             Style="{DynamicResource DarkPageStyle}"
+             Title=""
+             Shell.NavBarIsVisible="False">
 
 
     <ScrollView>

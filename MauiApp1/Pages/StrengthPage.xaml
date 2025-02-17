@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sf="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
              x:Class="MauiApp1.Pages.StrengthPage"
-             Title="StrengthPage"
-             Style="{DynamicResource DarkPageStyle}">
+             Title=""
+             Style="{DynamicResource DarkPageStyle}"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
     <VerticalStackLayout Padding="10" Spacing="10">
         <sf:SfSlider 
                      x:Name="StrengthSlider"
@@ -40,4 +42,5 @@
         BackgroundColor="#262626"
         Pressed="OnStrengthButtonPressed"/>
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
