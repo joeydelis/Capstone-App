@@ -5,7 +5,7 @@
              x:Class="MauiApp1.Pages.TimerPage"
              Title=""
              Style="{DynamicResource DarkPageStyle}"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="True">
     <ScrollView>
     <VerticalStackLayout Spacing="10" Padding="10">
         <Border BackgroundColor="#262626"
