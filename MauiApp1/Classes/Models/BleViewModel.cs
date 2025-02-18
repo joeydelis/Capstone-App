@@ -13,9 +13,7 @@ namespace MauiApp1.Classes.Models
 {
     public class BleViewModel : INotifyPropertyChanged
     {
-        private readonly IAdapter adapter;
-        private readonly IBluetoothLE bluetoothLE;
-        private DeviceViewModel connectedDevice;
+        private readonly BluetoothManager bluetoothManager;
         public ObservableCollection<DeviceViewModel> Devices { get; } = new();
 
         public Command StartScanCommand { get; }
@@ -23,11 +21,10 @@ namespace MauiApp1.Classes.Models
 
         public BleViewModel()
         {
-            bluetoothLE = CrossBluetoothLE.Current;
-            adapter = CrossBluetoothLE.Current.Adapter;
+            bluetoothManager = BluetoothManager.Instance;
 
             //Used when device is found from StartScanningAsync. Adds discovered device if it meets specified criteria
-            adapter.DeviceDiscovered += (s, e) =>
+            bluetoothManager.Adapter.DeviceDiscovered += (s, e) =>
             {
                 if (!string.IsNullOrEmpty(e.Device.Name) && !Devices.Any(d => d.Device.Id == e.Device.Id))
                 {
@@ -45,10 +42,10 @@ namespace MauiApp1.Classes.Models
 
             try
             {
-                await adapter.ConnectToDeviceAsync(device.Device);
+                await bluetoothManager.Adapter.ConnectToDeviceAsync(device.Device);
 
                 device.IsConnected = true;
-                connectedDevice = device;
+                bluetoothManager.ConnectedDevice = device;
 
             }
             catch (Exception ex)
@@ -61,9 +58,9 @@ namespace MauiApp1.Classes.Models
         {
             try
             {
-                await adapter.DisconnectDeviceAsync(device.Device);
+                await bluetoothManager.Adapter.DisconnectDeviceAsync(device.Device);
                 device.IsConnected = false;
-                connectedDevice = null;
+                bluetoothManager.ConnectedDevice = null;
             }
             catch (Exception ex)
             {
@@ -78,19 +75,19 @@ namespace MauiApp1.Classes.Models
 
             /* Should probably be changed to compare to BLE plugin connected devices list instead. Honestly all connection checks probably should be.
              * Will need to test with multiple connections, which shouldn't be possible with app normally anyway.*/
-            if (connectedDevice != null && connectedDevice.Device.Id == device.Device.Id)
+            if (bluetoothManager.ConnectedDevice != null && bluetoothManager.ConnectedDevice.Device.Id == device.Device.Id)
             {
                 /* --<TODO>-- This is a not great way of doing this but if you change this to disconnect from device it just explodes.
                  * Too tired to figure it out right now, will fix it at some point maybe. It technically works. */
-                await DisconnectFromDevice(connectedDevice);
+                await DisconnectFromDevice(bluetoothManager.ConnectedDevice);
                 device.IsConnected = false;
             }
             else
             {
                 //First disconnect from connected device to prevent multiple connections
-                if (connectedDevice != null)
+                if (bluetoothManager.ConnectedDevice != null)
                 {
-                    await DisconnectFromDevice(connectedDevice);
+                    await DisconnectFromDevice(bluetoothManager.ConnectedDevice);
                 }
                 await ConnectToDevice(device);
             }
@@ -98,13 +95,13 @@ namespace MauiApp1.Classes.Models
         }
         public async Task StartScanningAsync()
         {
-            if (!bluetoothLE.IsAvailable)
+            if (!bluetoothManager.BluetoothLE.IsAvailable)
             {
                 Debug.WriteLine("Bluetooth is not available on this device.");
                 return;
             }
 
-            if (!bluetoothLE.IsOn)
+            if (!bluetoothManager.BluetoothLE.IsOn)
             {
                 Debug.WriteLine("Bluetooth is not on.");
                 return;
@@ -120,17 +117,20 @@ namespace MauiApp1.Classes.Models
 
             //After clearing list, check to see if device is already connected from previous scans.
             //Should probably add check here to only display devices with correct name. Will prevent the need for a bunch of annoying validation stuff.
-            var connectedDevices = adapter.GetSystemConnectedOrPairedDevices();
-            foreach (var connectedDevice in connectedDevices)
+            if (bluetoothManager.ConnectedDevice != null)
             {
-                if (!Devices.Any(d => d.Device.Id == connectedDevice.Id))
+                var ConnectedDevices = bluetoothManager.Adapter.GetSystemConnectedOrPairedDevices();
+                foreach (var device in ConnectedDevices)
                 {
-                    Devices.Add(new DeviceViewModel(connectedDevice) { IsConnected = true });
+                    if (!Devices.Any(d => d.Device.Id == device.Id) && device.Id == bluetoothManager.ConnectedDevice.Device.Id)
+                    {
+                        Devices.Add(bluetoothManager.ConnectedDevice);
+                    }
                 }
             }
 
 
-            await adapter.StartScanningForDevicesAsync();
+            await bluetoothManager.Adapter.StartScanningForDevicesAsync();
         }
 
         private async Task<bool> HasCorrectPermissions()

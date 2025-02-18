@@ -157,6 +157,9 @@ Stroke="#262626"
                 Padding="20"
                 HorizontalOptions="FillAndExpand">
                 <Label Text="ENABLE DEVICE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnEnableDeviceClicked"/>
+                </Border.GestureRecognizers>
             </Border>
         </VerticalStackLayout>
     </ScrollView>

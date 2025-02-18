@@ -10,6 +10,6 @@ namespace MauiApp1.Classes
     {
         public static int DeviceMinutes = 0;
         public static int DeviceSeconds = 0;
-        public static int DeviceStrength = -1;
+        public static int DeviceStrength = 0;
     }
 }
