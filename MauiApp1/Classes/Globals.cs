@@ -8,8 +8,8 @@ namespace MauiApp1.Classes
 {
     public static class Globals
     {
-        public static int DeviceMinutes = -1;
-        public static int DeviceSeconds = -1;
+        public static int DeviceMinutes = 0;
+        public static int DeviceSeconds = 0;
         public static int DeviceStrength = 0;
     }
 }

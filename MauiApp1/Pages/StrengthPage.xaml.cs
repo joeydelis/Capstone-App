@@ -6,7 +6,7 @@ namespace MauiApp1.Pages;
 public partial class StrengthPage : ContentPage
 {
 	readonly double sliderIncrement = 1;
-	double sliderCorrectValue;
+    int _internalStrength = -1;
 	public StrengthPage()
 	{
 		InitializeComponent();
@@ -16,6 +16,7 @@ public partial class StrengthPage : ContentPage
         base.OnAppearing();
         if (Globals.DeviceStrength != -1)
         {
+            _internalStrength = Globals.DeviceStrength;
             StrengthSlider.Value = Globals.DeviceStrength;
         }
     }
@@ -25,6 +26,19 @@ public partial class StrengthPage : ContentPage
         SfSlider slider = (SfSlider)sender;
         double value = Math.Round(e.NewValue / sliderIncrement) * sliderIncrement;
         slider.Value = value;
-        Globals.DeviceStrength = (int)value;
+        _internalStrength = (int)value;
+    }
+    private void OnStrengthButtonPressed(object sender, EventArgs e)
+    {
+        if (Globals.DeviceStrength != _internalStrength)
+        {
+            Globals.DeviceStrength = _internalStrength;
+            DisplayAlert("Strength Set", $"Strength level set at {_internalStrength}", "OK");
+        }
+    }
+
+    private void Button_Pressed(object sender, EventArgs e)
+    {
+
     }
 }
