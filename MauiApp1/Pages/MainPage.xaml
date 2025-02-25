@@ -9,11 +9,11 @@
 
 
     <ScrollView>
-        <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <VerticalStackLayout Spacing="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
         <Grid RowDefinitions="Auto, Auto"
               ColumnDefinitions="*, *, *, *"
               ColumnSpacing="10"
-              RowSpacing="10"
+              RowSpacing="20"
               VerticalOptions="CenterAndExpand" 
               HorizontalOptions="CenterAndExpand">
 
