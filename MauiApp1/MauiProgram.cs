@@ -16,6 +16,7 @@ namespace MauiApp1
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("FontAwesomeSolid.otf", "FontAwesomeSolid");
+                    fonts.AddFont("Montserrat-VariableFont_wght.ttf", "Montserrat");
                 });
 
 #if DEBUG

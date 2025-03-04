@@ -15,9 +15,13 @@ public partial class TimerPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+        for (int i = 0; i <= 60; i++)
+        {
+            //MinutePicker.Items.Add(i.ToString());
+        }
         if (Globals.DeviceMinutes != -1 && Globals.DeviceSeconds != -1)
         {
-            TimePicker.SelectedTime = new TimeSpan(Globals.DeviceMinutes, Globals.DeviceSeconds, 0);
+            //TimePicker.SelectedTime = new TimeSpan(Globals.DeviceMinutes, Globals.DeviceSeconds, 0);
         }
     }
     private void OnPickerChanged(object sender, TimePickerSelectionChangedEventArgs e)

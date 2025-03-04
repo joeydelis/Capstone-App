@@ -30,15 +30,17 @@
                 Padding="20"
                 HorizontalOptions="CenterAndExpand">
                     <StackLayout>
-                        <Label Text="&#xf00c;"
+                        <Label x:Name="connectedGlyph"
+                            Text="&#xf00c;"
     FontFamily="FontAwesomeSolid"
     FontSize="36"
     TextColor="LightGreen"
     HorizontalOptions="Center"
     VerticalOptions="Center"/>
-                        <Label Text="CONNECTED"
-FontFamily="FontAwesomeSolid"
-FontSize="7"
+                        <Label x:Name="connectedText"
+                            Text="Connected!"
+FontFamily="Montserrat"
+FontSize="9"
 TextColor="LightGreen"
 HorizontalOptions="Center"
 VerticalOptions="Center"/>
@@ -58,8 +60,11 @@ Stroke="#262626"
                     Grid.ColumnSpan="3"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="FillAndExpand">
-                    <Label Text="&#xf013; CONFIGURE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
-                <Border.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="&#xf013;" FontFamily="FontAwesomeSolid" FontSize="18" TextColor="White"/>
+                        <Label Text=" Configure" FontSize="18" FontFamily="Montserrat" TextColor="White"/>
+                    </StackLayout>
+                    <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnBluetoothPageClicked"/>
                 </Border.GestureRecognizers>
                 </Border>
@@ -76,6 +81,7 @@ Stroke="#262626"
                     Grid.ColumnSpan="1"
                     Padding="5"
                     HorizontalOptions="FillAndExpand">
+                    <Grid>
                     <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent">
                         <gauge:SfRadialGauge.Axes>
                             <gauge:RadialAxis Minimum="0"
@@ -101,6 +107,14 @@ Stroke="#262626"
                             </gauge:RadialAxis>
                         </gauge:SfRadialGauge.Axes>
                     </gauge:SfRadialGauge>
+                        <Label Text="STRENGTH"
+               FontSize="10"
+               FontFamily="Montserrat"
+               TextColor="White"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Margin="0,-75,0,0"/>
+                    </Grid>
                     <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnStrengthPageClicked"/>
                 </Border.GestureRecognizers>
@@ -118,7 +132,10 @@ Stroke="#262626"
                     Grid.ColumnSpan="3"
                     Padding="20"
                     HorizontalOptions="FillAndExpand">
-                    <Label Text="&#xf017; SET TIMER" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="&#xf017;" FontFamily="FontAwesomeSolid" FontSize="18" TextColor="White"/>
+                        <Label Text=" Set Timer" FontSize="18" TextColor="White" FontFamily="Montserrat"/>
+                    </StackLayout>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
                 </Border.GestureRecognizers>
@@ -139,7 +156,7 @@ Stroke="#262626"
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
-                            <Span x:Name="TimeLabel" Text="00 hr 00 min" FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
+                            <Span x:Name="TimeLabel" Text="00 hours, 00 minutes" FontFamily="Montserrat" FontSize="18" TextColor="LightGreen"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -156,7 +173,7 @@ Stroke="#262626"
                 Grid.Column="0"
                 Padding="20"
                 HorizontalOptions="FillAndExpand">
-                <Label Text="ENABLE DEVICE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                <Label Text="Enable Device" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="Montserrat" FontSize="18"/>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnEnableDeviceClicked"/>
                 </Border.GestureRecognizers>
