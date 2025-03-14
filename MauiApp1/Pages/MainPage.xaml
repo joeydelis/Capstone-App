@@ -161,6 +161,11 @@ Stroke="#262626"
                     <TapGestureRecognizer Tapped="OnEnableDeviceClicked"/>
                 </Border.GestureRecognizers>
             </Border>
+            
+            <!-- TEST BUTTONS-->
+            <Button Text="Login/SignUp" Clicked="OnLoginClicked" />
+            <Button Text="Logout" Clicked="OnLogoutClicked" />
+            <Button Text="Test" Clicked="OnTestClicked" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

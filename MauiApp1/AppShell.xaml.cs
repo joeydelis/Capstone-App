@@ -10,6 +10,9 @@ namespace MauiApp1
             Routing.RegisterRoute(nameof(BluetoothConnectionPage), typeof(BluetoothConnectionPage));
             Routing.RegisterRoute(nameof(StrengthPage), typeof(StrengthPage));
             Routing.RegisterRoute(nameof(TimerPage), typeof(TimerPage));
+            Routing.RegisterRoute(nameof(FirebaseLoginPage), typeof(FirebaseLoginPage));
+            Routing.RegisterRoute(nameof(FirebaseSignUpPage), typeof(FirebaseSignUpPage));
+            Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
         }
     }
 }
