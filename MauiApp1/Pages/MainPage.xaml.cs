@@ -93,7 +93,7 @@ namespace MauiApp1
             }
         }
 
-        private async void OnTestClicked(object sender, EventArgs e)
+        private async void OnAddClicked(object sender, EventArgs e)
         {
             bool dataAdded = await firebase.AddUserSetting();
 
@@ -104,6 +104,34 @@ namespace MauiApp1
             else
             {
                 await DisplayAlert("Failure", "User not added", "OK");
+            }
+        }
+
+        private async void OnTestClicked(object sender, EventArgs e)
+        {
+            bool isSignedIn = await firebase.IsUserSignedInAsync();
+            if (isSignedIn)
+            {
+                var presets = await Firebase.Instance.GetUserPresetsAsync();
+
+                if (presets != null)
+                {
+                    await DisplayAlert("Success", $"Retrieved {presets.Count} presets!", "OK");
+                    foreach (var preset in presets)
+                    {
+                        Console.WriteLine(preset.Time);
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Unable get presets", "Error retrieving presets", "OK");
+                }
+
+
+            }
+            else
+            {
+                await DisplayAlert("Unable get presets", "No user signed in", "OK");
             }
         }
     }
