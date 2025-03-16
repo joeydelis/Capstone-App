@@ -165,7 +165,6 @@ Stroke="#262626"
             <!-- TEST BUTTONS-->
             <Button Text="Login/SignUp" Clicked="OnLoginClicked" />
             <Button Text="Logout" Clicked="OnLogoutClicked" />
-            <Button Text="Add" Clicked="OnAddClicked"/>
             <Button Text="Test" Clicked="OnTestClicked" />
         </VerticalStackLayout>
     </ScrollView>

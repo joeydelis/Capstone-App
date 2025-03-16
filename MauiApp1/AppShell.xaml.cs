@@ -13,6 +13,7 @@ namespace MauiApp1
             Routing.RegisterRoute(nameof(FirebaseLoginPage), typeof(FirebaseLoginPage));
             Routing.RegisterRoute(nameof(FirebaseSignUpPage), typeof(FirebaseSignUpPage));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+            Routing.RegisterRoute(nameof(PresetsPage), typeof(PresetsPage));
         }
     }
 }

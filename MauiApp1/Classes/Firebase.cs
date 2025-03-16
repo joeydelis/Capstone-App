@@ -44,12 +44,13 @@ namespace MauiApp1.Classes
             public string refreshToken { get; set; }
         }
 
-        public class UserData
+        public class PresetData
         {
             public string Name { get; set; }
             public int Time { get; set; }
             public int Strength { get; set; }
             public string UserId { get; set; }
+            public string Id { get; set; }
         }
 
         public async Task<bool> HandleAuthResponse(HttpResponseMessage response)
@@ -102,13 +103,12 @@ namespace MauiApp1.Classes
             SecureStorage.Remove("firebase_refresh");
         }
 
-        public async Task<bool> AddUserSetting()
+        public async Task<bool> AddUserSetting(string name)
         {
             var token = await SecureStorage.GetAsync("firebase_token");
             bool isExpired = await IsIdTokenExpired(token);
             if (isExpired)
             {
-                Console.WriteLine("Token is expired.");
                 bool isRefreshed = await RefreshIdTokenAsync();
                 if (isRefreshed)
                 {
@@ -128,7 +128,7 @@ namespace MauiApp1.Classes
                 {
                     name = new
                     {
-                        stringValue = "test"
+                        stringValue = name
                     },
                     time = new
                     {
@@ -157,7 +157,7 @@ namespace MauiApp1.Classes
 
         }
 
-        public async Task<List<UserData>> GetUserPresetsAsync()
+        public async Task<List<PresetData>> GetUserPresetsAsync()
         {
             var token = await SecureStorage.GetAsync("firebase_token");
             bool isExpired = await IsIdTokenExpired(token);
@@ -181,7 +181,7 @@ namespace MauiApp1.Classes
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                var presets = new List<UserData>();
+                var presets = new List<PresetData>();
 
                 using (JsonDocument doc = JsonDocument.Parse(content))
                 {
@@ -193,9 +193,9 @@ namespace MauiApp1.Classes
 
                             if (fields.GetProperty("userId").GetProperty("stringValue").GetString() == uuid)
                             {
-                                Console.WriteLine("userId = uuid");
-                                presets.Add(new UserData
+                                presets.Add(new PresetData
                                 {
+                                    Id = document.GetProperty("name").GetString()?.Split('/').Last(),
                                     Name = fields.GetProperty("name").GetProperty("stringValue").GetString(),
                                     Time = int.Parse(fields.GetProperty("time").GetProperty("integerValue").GetString()),
                                     Strength = int.Parse(fields.GetProperty("strength").GetProperty("integerValue").GetString()),
@@ -235,9 +235,37 @@ namespace MauiApp1.Classes
             }
         }
 
+        public async Task<bool> DeleteUserPresetAsync(string documentId)
+        {
+            Console.WriteLine("In DeleteUserPresetAsync");
+            var token = await SecureStorage.GetAsync("firebase_token");
+            bool isExpired = await IsIdTokenExpired(token);
+            if (isExpired)
+            {
+                bool isRefreshed = await RefreshIdTokenAsync();
+                if (isRefreshed)
+                {
+                    token = await SecureStorage.GetAsync("firebase_token");
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            string deleteUrl = $"https://firestore.googleapis.com/v1/projects/{projectId}/databases/(default)/documents/{collection}/{documentId}?key={ApiKey}";
+
+            var request = new HttpRequestMessage(HttpMethod.Delete, deleteUrl);
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _httpClient.SendAsync(request);
+
+            return response.IsSuccessStatusCode;
+
+        }
+
         public async Task<bool> RefreshIdTokenAsync()
         {
-            Console.WriteLine("Attempting to refresh token");
             var refreshToken = await SecureStorage.GetAsync("firebase_refresh");
 
             var payload = new
