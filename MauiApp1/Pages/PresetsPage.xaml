@@ -10,7 +10,11 @@
 
 			<Label Text="Presets" FontSize="24" HorizontalOptions="Center" TextColor="White"/>
 
-			<ListView x:Name="PresetsListView" ItemsSource="{Binding Presets}" HasUnevenRows="True">
+			<ListView x:Name="PresetsListView" 
+                      ItemsSource="{Binding Presets}" 
+                      HasUnevenRows="True"
+                      SelectionMode="Single"
+					  SelectedItem="{Binding SelectedPreset, Mode=TwoWay}">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell>

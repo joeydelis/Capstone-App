@@ -132,7 +132,7 @@ namespace MauiApp1.Classes
                     },
                     time = new
                     {
-                        integerValue = Globals.DeviceSeconds
+                        integerValue = (Globals.DeviceMinutes * 60) + Globals.DeviceSeconds
                     },
                     strength = new
                     {
@@ -295,6 +295,13 @@ namespace MauiApp1.Classes
             {
                 return false;
             }
+        }
+
+        public void LoadPreset(int time, int strength)
+        {
+            Globals.DeviceStrength = strength;
+            Globals.DeviceMinutes = time / 60;
+            Globals.DeviceSeconds = time % 60;
         }
 
     }
