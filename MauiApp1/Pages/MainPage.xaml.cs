@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Security.AccessControl;
 using MauiApp1.Classes;
+using MauiApp1.Classes.Models;
 namespace MauiApp1
 {
     public partial class MainPage : ContentPage
@@ -9,16 +10,23 @@ namespace MauiApp1
         int count = 0;
         private readonly BluetoothManager bluetoothManager;
         private readonly Firebase firebase;
+        private MainViewModel viewModel = new();
 
         public MainPage()
         {
             InitializeComponent();
             bluetoothManager = BluetoothManager.Instance;
             firebase = Firebase.Instance;
+            BindingContext = viewModel;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            //Reloads viewmodel so that login/logout button can be updated to correct text.
+            viewModel.Initialize();
+
+
             if (Globals.DeviceStrength != -1)
             {
                 StrengthPointer.Value = Globals.DeviceStrength;
@@ -69,31 +77,7 @@ namespace MauiApp1
             
         }
 
-        private async void OnLoginClicked(object sender, EventArgs e)
-        {
-            bool isSignedIn = await firebase.IsUserSignedInAsync();
-            if (isSignedIn)
-            {
-                await DisplayAlert("Unable to sign in", "User already signed in", "OK");
-            } else
-            {
-                await Shell.Current.GoToAsync("/FirebaseLoginPage");
-            }
-        }
-
-        private async void OnLogoutClicked(object sender, EventArgs e)
-        {
-            bool isSignedIn = await firebase.IsUserSignedInAsync();
-            if (isSignedIn) 
-            {
-                Firebase.Logout();
-            } else
-            {
-                await DisplayAlert("Unable to logout", "No user signed in", "OK");
-            }
-        }
-
-        private async void OnTestClicked(object sender, EventArgs e)
+        private async void OnPresetsClicked(object sender, EventArgs e)
         {
             bool isSignedIn = await firebase.IsUserSignedInAsync();
             if (!isSignedIn)

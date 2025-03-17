@@ -105,6 +105,11 @@ namespace MauiApp1.Classes
 
         public async Task<bool> AddUserSetting(string name)
         {
+
+            /*
+             * This chunk of code is in a couple functions because an auth token is required in the header to do crud operations.
+             * However, the idToken given on signIn/signUp expires so a new one must be retrieved with the refresh token occasionally.
+             */
             var token = await SecureStorage.GetAsync("firebase_token");
             bool isExpired = await IsIdTokenExpired(token);
             if (isExpired)
@@ -132,6 +137,7 @@ namespace MauiApp1.Classes
                     },
                     time = new
                     {
+                        //Time is stored as just minutes for simplicity
                         integerValue = (Globals.DeviceMinutes * 60) + Globals.DeviceSeconds
                     },
                     strength = new
@@ -215,6 +221,7 @@ namespace MauiApp1.Classes
 
         public async Task<bool> IsIdTokenExpired(string idToken)
         {
+            //idTokens are json web tokens and can be parsed into JSON with a time field that can be retrieved and used to check if token is expired.
             try
             {
                 var payload = idToken.Split('.')[1];
@@ -237,7 +244,6 @@ namespace MauiApp1.Classes
 
         public async Task<bool> DeleteUserPresetAsync(string documentId)
         {
-            Console.WriteLine("In DeleteUserPresetAsync");
             var token = await SecureStorage.GetAsync("firebase_token");
             bool isExpired = await IsIdTokenExpired(token);
             if (isExpired)
@@ -253,6 +259,7 @@ namespace MauiApp1.Classes
                 }
             }
 
+            //Url is document dependent so easier to have here instead of top of class with other urls.
             string deleteUrl = $"https://firestore.googleapis.com/v1/projects/{projectId}/databases/(default)/documents/{collection}/{documentId}?key={ApiKey}";
 
             var request = new HttpRequestMessage(HttpMethod.Delete, deleteUrl);

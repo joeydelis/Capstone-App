@@ -55,6 +55,9 @@ namespace MauiApp1.Classes.Models
                 {
                     Presets.Add(preset);
                 }
+            } else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error!", "There was an error retrieving user settings.", "Ok");
             }
         }
 

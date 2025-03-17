@@ -10,7 +10,14 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Grid RowDefinitions="Auto, Auto"
+
+            <!-- Login/Logout Button -->
+            <Button Text="{Binding LoginButtonText}" 
+                    Command="{Binding LoginLogoutCommand}"
+                    BackgroundColor="#262626"
+                    />
+
+            <Grid RowDefinitions="Auto, Auto"
               ColumnDefinitions="*, *, *, *"
               ColumnSpacing="10"
               RowSpacing="10"
@@ -31,24 +38,24 @@
                 HorizontalOptions="CenterAndExpand">
                     <StackLayout>
                         <Label Text="&#xf00c;"
-    FontFamily="FontAwesomeSolid"
-    FontSize="36"
-    TextColor="LightGreen"
-    HorizontalOptions="Center"
-    VerticalOptions="Center"/>
+                                FontFamily="FontAwesomeSolid"
+                                FontSize="36"
+                                TextColor="LightGreen"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"/>
                         <Label Text="CONNECTED"
-FontFamily="FontAwesomeSolid"
-FontSize="7"
-TextColor="LightGreen"
-HorizontalOptions="Center"
-VerticalOptions="Center"/>
+                                FontFamily="FontAwesomeSolid"
+                                FontSize="7"
+                                TextColor="LightGreen"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"/>
                     </StackLayout>
                 </Border>
 
             <!-- CONFIGURE BUTTON BOX -->
             <Border x:Name="configureBox"
                     BackgroundColor="#262626"
-Stroke="#262626"
+                    Stroke="#262626"
                     StrokeThickness="2"
                     StrokeShape="RoundRectangle 10,10,10,10"
                     Padding="20"
@@ -67,7 +74,7 @@ Stroke="#262626"
             <!-- STRENGTH BOX -->
                 <Border x:Name="strengthBox"
                     BackgroundColor="#262626"
-Stroke="#262626"
+                    Stroke="#262626"
                     StrokeThickness="2"
                     StrokeShape="RoundRectangle 10,10,10,10"
                     HeightRequest="100"
@@ -109,7 +116,7 @@ Stroke="#262626"
             <!-- TIMER BOX -->
             <Border x:Name="timerBox"
                     BackgroundColor="#262626"
-Stroke="#262626"
+                    Stroke="#262626"
                     StrokeThickness="2"
                     StrokeShape="RoundRectangle 10,10,10,10"
                     HeightRequest="100"
@@ -127,7 +134,7 @@ Stroke="#262626"
         <!-- TIME DISPLAY BOX -->
             <Border x:Name="displayBox"
                 BackgroundColor="#262626"
-Stroke="#262626"
+                Stroke="#262626"
                 StrokeThickness="2"
                 StrokeShape="RoundRectangle 10,10,10,10"
                 HeightRequest="100"
@@ -148,7 +155,7 @@ Stroke="#262626"
             <!-- START BOX -->
             <Border x:Name="startBox"
                 BackgroundColor="#262626"
-Stroke="#262626"
+                Stroke="#262626"
                 StrokeThickness="2"
                 StrokeShape="RoundRectangle 10,10,10,10"
                 HeightRequest="100"
@@ -161,11 +168,24 @@ Stroke="#262626"
                     <TapGestureRecognizer Tapped="OnEnableDeviceClicked"/>
                 </Border.GestureRecognizers>
             </Border>
-            
-            <!-- TEST BUTTONS-->
-            <Button Text="Login/SignUp" Clicked="OnLoginClicked" />
-            <Button Text="Logout" Clicked="OnLogoutClicked" />
-            <Button Text="Test" Clicked="OnTestClicked" />
+
+            <!-- PRESETS BOX -->
+            <Border x:Name="PresetsBox"
+                BackgroundColor="#262626"
+                Stroke="#262626"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                HeightRequest="100"
+                Grid.Row="3"
+                Grid.Column="0"
+                Padding="20"
+                HorizontalOptions="FillAndExpand">
+                <Label Text="USER PRESETS" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnEnableDeviceClicked"/>
+                </Border.GestureRecognizers>
+            </Border>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
