@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Security.AccessControl;
 using MauiApp1.Classes;
-namespace MauiApp1
+namespace MauiApp1.Pages
 {
     public partial class MainPage : ContentPage
     {
