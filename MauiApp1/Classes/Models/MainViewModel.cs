@@ -26,9 +26,9 @@ namespace MauiApp1.Classes.Models
 
         public ICommand LoginLogoutCommand { get; }
 
-        public MainViewModel()
+        public MainViewModel(Firebase firebaseParam)
         {
-            firebase = Firebase.Instance;
+            firebase = firebaseParam;
             LoginLogoutCommand = new Command(async () => await HandleLoginLogout());
             Initialize();
         }
@@ -45,7 +45,7 @@ namespace MauiApp1.Classes.Models
 
             if (isSignedIn)
             {
-                Firebase.Logout();
+                firebase.Logout();
                 LoginButtonText = "Login";
                 await Application.Current.MainPage.DisplayAlert("Logged out!", "You have been successfully logged out of your account.", "Ok");
             }

@@ -182,7 +182,7 @@
                 HorizontalOptions="FillAndExpand">
                 <Label Text="USER PRESETS" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
                 <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnEnableDeviceClicked"/>
+                    <TapGestureRecognizer Tapped="OnPresetsClicked"/>
                 </Border.GestureRecognizers>
             </Border>
 

@@ -5,12 +5,14 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using MauiApp1.Services;
 
 namespace MauiApp1.Classes
 {
     public class Firebase
     {
-        private static Firebase instance;
+        
+        private readonly ISecureStorageService secureStorage;
 
         private const string ApiKey = "AIzaSyDLzy3mB2vWXGECc184LGdR9cKPQJar84w";
         private const string projectId = "capstone-fb6b0";
@@ -22,19 +24,10 @@ namespace MauiApp1.Classes
         private const string CollectionUrl = $"https://firestore.googleapis.com/v1/projects/{projectId}/databases/(default)/documents/{collection}?key={ApiKey}";
         private const string RefreshUrl = $"https://securetoken.googleapis.com/v1/token?key={ApiKey}";
 
-        //This is needed to prevent outside instantiation since its a singleton. So please don't delete
-        private Firebase() { }
-
-        public static Firebase Instance
+        //Can't use securestorage in unit tests so need to use dependency injection so that you can mock it
+        public Firebase(ISecureStorageService secureStorageService) 
         {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new Firebase();
-                }
-                return instance;
-            }
+            secureStorage = secureStorageService;
         }
 
         private class AuthResponse
@@ -63,9 +56,9 @@ namespace MauiApp1.Classes
 
                 if (jsonResponse?.idToken != null)
                 {
-                    await SecureStorage.SetAsync("firebase_token", jsonResponse.idToken);
-                    await SecureStorage.SetAsync("firebase_uuid", jsonResponse.localId);
-                    await SecureStorage.SetAsync("firebase_refresh", jsonResponse.refreshToken);
+                    await secureStorage.SetAsync("firebase_token", jsonResponse.idToken);
+                    await secureStorage.SetAsync("firebase_uuid", jsonResponse.localId);
+                    await secureStorage.SetAsync("firebase_refresh", jsonResponse.refreshToken);
                 }
                 return true;
 
@@ -93,14 +86,14 @@ namespace MauiApp1.Classes
 
         public async Task<bool> IsUserSignedInAsync()
         {
-            var token = await SecureStorage.GetAsync("firebase_uuid");
+            var token = await secureStorage.GetAsync("firebase_uuid");
             return !string.IsNullOrEmpty(token);
         }
-        public static void Logout()
+        public void Logout()
         {
-            SecureStorage.Remove("firebase_token");
-            SecureStorage.Remove("firebase_uuid");
-            SecureStorage.Remove("firebase_refresh");
+            secureStorage.Remove("firebase_token");
+            secureStorage.Remove("firebase_uuid");
+            secureStorage.Remove("firebase_refresh");
         }
 
         public async Task<bool> AddUserSetting(string name)
@@ -110,21 +103,21 @@ namespace MauiApp1.Classes
              * This chunk of code is in a couple functions because an auth token is required in the header to do crud operations.
              * However, the idToken given on signIn/signUp expires so a new one must be retrieved with the refresh token occasionally.
              */
-            var token = await SecureStorage.GetAsync("firebase_token");
+            var token = await secureStorage.GetAsync("firebase_token");
             bool isExpired = await IsIdTokenExpired(token);
             if (isExpired)
             {
                 bool isRefreshed = await RefreshIdTokenAsync();
                 if (isRefreshed)
                 {
-                    token = await SecureStorage.GetAsync("firebase_token");
+                    token = await secureStorage.GetAsync("firebase_token");
                 }
                 else
                 {
                     return false;
                 }
             }
-            var uuid = await SecureStorage.GetAsync("firebase_uuid");
+            var uuid = await secureStorage.GetAsync("firebase_uuid");
 
 
             var data = new
@@ -165,20 +158,20 @@ namespace MauiApp1.Classes
 
         public async Task<List<PresetData>> GetUserPresetsAsync()
         {
-            var token = await SecureStorage.GetAsync("firebase_token");
+            var token = await secureStorage.GetAsync("firebase_token");
             bool isExpired = await IsIdTokenExpired(token);
             if (isExpired)
             {
                 bool isRefreshed = await RefreshIdTokenAsync();
                 if (isRefreshed)
                 {
-                    token = await SecureStorage.GetAsync("firebase_token");
+                    token = await secureStorage.GetAsync("firebase_token");
                 } else
                 {
                     return null;
                 }
             }
-            var uuid = await SecureStorage.GetAsync("firebase_uuid");
+            var uuid = await secureStorage.GetAsync("firebase_uuid");
 
             var request = new HttpRequestMessage(HttpMethod.Get, CollectionUrl);
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
@@ -244,14 +237,14 @@ namespace MauiApp1.Classes
 
         public async Task<bool> DeleteUserPresetAsync(string documentId)
         {
-            var token = await SecureStorage.GetAsync("firebase_token");
+            var token = await secureStorage.GetAsync("firebase_token");
             bool isExpired = await IsIdTokenExpired(token);
             if (isExpired)
             {
                 bool isRefreshed = await RefreshIdTokenAsync();
                 if (isRefreshed)
                 {
-                    token = await SecureStorage.GetAsync("firebase_token");
+                    token = await secureStorage.GetAsync("firebase_token");
                 }
                 else
                 {
@@ -273,7 +266,7 @@ namespace MauiApp1.Classes
 
         public async Task<bool> RefreshIdTokenAsync()
         {
-            var refreshToken = await SecureStorage.GetAsync("firebase_refresh");
+            var refreshToken = await secureStorage.GetAsync("firebase_refresh");
 
             var payload = new
             {
@@ -293,8 +286,8 @@ namespace MauiApp1.Classes
                     string newIdToken = root.GetProperty("id_token").GetString();
                     string newRefreshToken = root.GetProperty("refresh_token").GetString();
 
-                    await SecureStorage.SetAsync("firebase_token", newIdToken);
-                    await SecureStorage.SetAsync("firebase_refresh", newRefreshToken);
+                    await secureStorage.SetAsync("firebase_token", newIdToken);
+                    await secureStorage.SetAsync("firebase_refresh", newRefreshToken);
                 }
 
                 return true;

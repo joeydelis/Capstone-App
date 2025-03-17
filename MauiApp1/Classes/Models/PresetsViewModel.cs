@@ -35,9 +35,9 @@ namespace MauiApp1.Classes.Models
         public ICommand AddCommand { get; }
         public ICommand LoadPresetCommand { get; }
 
-        public PresetsViewModel()
+        public PresetsViewModel(Firebase firebaseParam)
         {
-            firebase = Firebase.Instance;
+            firebase = firebaseParam;
             DeleteCommand = new Command<Firebase.PresetData>(async (preset) => await DeletePreset(preset));
             AddCommand = new Command(async () => await AddPreset());
             LoadPresetCommand = new Command<Firebase.PresetData>(async (preset) => await LoadPreset(preset));

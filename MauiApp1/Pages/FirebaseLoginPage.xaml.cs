@@ -10,10 +10,10 @@ namespace MauiApp1.Pages
     public partial class FirebaseLoginPage : ContentPage
     {
         private readonly Firebase firebase;
-        public FirebaseLoginPage()
+        public FirebaseLoginPage(Firebase firebaseParam)
         { 
             InitializeComponent();
-            firebase = Firebase.Instance;
+            firebase = firebaseParam;
         }
 
         private async void OnLoginClicked(object sender, EventArgs e)

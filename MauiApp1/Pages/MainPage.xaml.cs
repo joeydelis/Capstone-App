@@ -10,13 +10,14 @@ namespace MauiApp1
         int count = 0;
         private readonly BluetoothManager bluetoothManager;
         private readonly Firebase firebase;
-        private MainViewModel viewModel = new();
+        private MainViewModel viewModel;
 
-        public MainPage()
+        public MainPage(Firebase firebaseParam)
         {
             InitializeComponent();
             bluetoothManager = BluetoothManager.Instance;
-            firebase = Firebase.Instance;
+            firebase = firebaseParam;
+            viewModel = new MainViewModel(firebaseParam);
             BindingContext = viewModel;
         }
         protected override void OnAppearing()
