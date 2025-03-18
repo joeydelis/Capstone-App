@@ -71,10 +71,10 @@
                 </Border.GestureRecognizers>
                 </Border>
 
-            <!-- STRENGTH BOX -->
+                <!-- STRENGTH BOX -->
                 <Border x:Name="strengthBox"
                     BackgroundColor="#262626"
-                    Stroke="#262626"
+Stroke="#262626"
                     StrokeThickness="2"
                     StrokeShape="RoundRectangle 10,10,10,10"
                     HeightRequest="100"
@@ -83,37 +83,46 @@
                     Grid.ColumnSpan="1"
                     Padding="5"
                     HorizontalOptions="FillAndExpand">
-                    <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent">
-                        <gauge:SfRadialGauge.Axes>
-                            <gauge:RadialAxis Minimum="0"
+                    <Grid>
+                        <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent" InputTransparent="True">
+                            <gauge:SfRadialGauge.Axes>
+                                <gauge:RadialAxis Minimum="0"
                                               Maximum="10"
                                               ShowLabels="False"
                                               ShowTicks="False"
                                 >
-                                <gauge:RadialAxis.AxisLineStyle>
-                                    <gauge:RadialLineStyle
+                                    <gauge:RadialAxis.AxisLineStyle>
+                                        <gauge:RadialLineStyle
                                         CornerStyle="BothCurve"
                                         Fill="#121212"/>
-                                </gauge:RadialAxis.AxisLineStyle>
-                                <gauge:RadialAxis.Pointers>
-                                    <gauge:RangePointer x:Name="StrengthPointer" Value="0" Fill="LightGreen" CornerStyle="BothCurve"/>
-                                </gauge:RadialAxis.Pointers>
-                                <gauge:RadialAxis.Annotations>
-                                    <gauge:GaugeAnnotation>
-                                        <gauge:GaugeAnnotation.Content>
-                                            <Label x:Name="StrengthValue" FontFamily="FontAwesomeSolid" FontSize="11" Text="0" TextColor="LightGreen"/>
-                                        </gauge:GaugeAnnotation.Content>
-                                    </gauge:GaugeAnnotation>
-                                </gauge:RadialAxis.Annotations>
-                            </gauge:RadialAxis>
-                        </gauge:SfRadialGauge.Axes>
-                    </gauge:SfRadialGauge>
+                                    </gauge:RadialAxis.AxisLineStyle>
+                                    <gauge:RadialAxis.Pointers>
+                                        <gauge:RangePointer x:Name="StrengthPointer" Value="0" Fill="LightGreen" CornerStyle="BothCurve"/>
+                                    </gauge:RadialAxis.Pointers>
+                                    <gauge:RadialAxis.Annotations>
+                                        <gauge:GaugeAnnotation>
+                                            <gauge:GaugeAnnotation.Content>
+                                                <Label x:Name="StrengthValue" FontFamily="FontAwesomeSolid" FontSize="11" Text="0" TextColor="LightGreen"/>
+                                            </gauge:GaugeAnnotation.Content>
+                                        </gauge:GaugeAnnotation>
+                                    </gauge:RadialAxis.Annotations>
+                                </gauge:RadialAxis>
+                            </gauge:SfRadialGauge.Axes>
+                        </gauge:SfRadialGauge>
+                        <Label Text="STRENGTH"
+               FontSize="10"
+               FontFamily="Montserrat"
+               TextColor="White"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Margin="0,-75,0,0"/>
+                    </Grid>
                     <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnStrengthPageClicked"/>
-                </Border.GestureRecognizers>
-            </Border>
+                        <TapGestureRecognizer Tapped="OnStrengthPageClicked"/>
+                    </Border.GestureRecognizers>
+                </Border>
 
-            <!-- TIMER BOX -->
+                <!-- TIMER BOX -->
             <Border x:Name="timerBox"
                     BackgroundColor="#262626"
                     Stroke="#262626"
