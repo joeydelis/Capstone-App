@@ -4,12 +4,17 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiApp1"
+    xmlns:pages="clr-namespace:MauiApp1.Pages"
     Shell.FlyoutBehavior="Flyout"
     Title="TherapyApp">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate pages:MainPage}"
         Route="MainPage" />
+    <ShellContent
+        Title="Instructions"
+        ContentTemplate="{DataTemplate pages:InstructionsPage}"
+        Route="InstructionsPage"/>
 
 </Shell>

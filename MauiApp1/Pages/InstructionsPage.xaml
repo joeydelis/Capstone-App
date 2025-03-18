@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.Pages.InstructionsPage"
+             Style="{DynamicResource DarkPageStyle}"
+             Title=""
+             Shell.NavBarIsVisible="False">
+    <VerticalStackLayout>
+        <Label 
+            Text="This page contains instructions on how to use each page within the app for use with the therapy device. A video showcasing the pages will be added at a later date."
+            TextColor="White"
+            FontFamily="Montserrat"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Margin="0,0,0,20"/>
+        <Label 
+    Text="Main Page"
+    TextColor="White"
+    FontFamily="Montserrat"
+    VerticalOptions="Center" 
+    HorizontalOptions="Center"
+    FontAttributes="Bold"/>
+        <Label 
+FontFamily="Montserrat"
+VerticalOptions="Center" 
+HorizontalOptions="Center"
+            Margin="0,0,0,20">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span TextColor ="White" Text="The main page contains buttons which allow for easy navigation to the other components."/>
+                    <Span TextColor="White" Text="&#10;From top to botton, left to right, they are:"/>
+                    <Span TextColor="White" Text="&#10; - Bluetooth indicator display"/>
+                    <Span TextColor="White" Text="&#10; - Bluetooth configuration button"/>
+                    <Span TextColor="White" Text="&#10; - Timer configuration button"/>
+                    <Span TextColor="White" Text="&#10; - Time display"/>
+                    <Span TextColor="White" Text="&#10; - Enable device button"/>
+                    <Span TextColor="White" Text="&#10;Each button can be interacted with and navigated to."/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label 
+Text="Bluetooth Configuration"
+TextColor="White"
+FontFamily="Montserrat"
+VerticalOptions="Center" 
+HorizontalOptions="Center"
+FontAttributes="Bold"/>
+        <Label 
+FontFamily="Montserrat"
+VerticalOptions="Center" 
+HorizontalOptions="Center"
+            Margin="0,0,0,20">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span TextColor ="White" Text="This page allows you to configure the therapy device for Bluetooth connection."/>
+                    <Span TextColor="White" Text=" To configure the device, do the following:"/>
+                    <Span TextColor="White" Text="&#10;1. Click the 'Scan for devices' button at the top of the screen"/>
+                    <Span TextColor="White" Text="&#10;2. A device list menu should appear/ Here, you can select the appropriate device"/>
+                    <Span TextColor="White" Text="&#10;3. If done correctly, the bluetooth indicator on the previous page should change to 'Connected!' and should appear green. If it doesn't, try a different device."/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label 
+Text="Timer Configuration"
+TextColor="White"
+FontFamily="Montserrat"
+VerticalOptions="Center" 
+HorizontalOptions="Center"
+FontAttributes="Bold"/>
+        <Label 
+FontFamily="Montserrat"
+VerticalOptions="Center" 
+HorizontalOptions="Center"
+            Margin="0,0,0,20">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span TextColor ="White" Text="This page allows you to configure the amount of time that the device is on for."/>
+                    <Span TextColor="White" Text="&#10;This page contains a timer dial. It can be adjusted for a maximum time for one hour. Click 'Set timer' to set the timer."/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label 
+Text="Strength Configuration"
+TextColor="White"
+FontFamily="Montserrat"
+VerticalOptions="Center" 
+HorizontalOptions="Center"
+FontAttributes="Bold"/>
+        <Label 
+FontFamily="Montserrat"
+VerticalOptions="Center" 
+HorizontalOptions="Center"
+            Margin="0,0,0,20">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span TextColor ="White" Text="This page allows you to configure the strength of therapy, this ranges from 1-10."/>
+                    <Span TextColor="White" Text="&#10;To configure the strength, simply move the large white circle to the number correlating to the strenght level you would like. Hit 'Set Strength' to save the strength value."/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>

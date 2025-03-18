@@ -45,6 +45,7 @@ namespace MauiApp1.Classes.Models
                 await bluetoothManager.Adapter.ConnectToDeviceAsync(device.Device);
 
                 device.IsConnected = true;
+                Globals.HasConnectedDevice = true;
                 bluetoothManager.ConnectedDevice = device;
 
             }

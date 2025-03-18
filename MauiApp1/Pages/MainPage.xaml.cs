@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Security.AccessControl;
 using MauiApp1.Classes;
-namespace MauiApp1
+namespace MauiApp1.Pages
 {
     public partial class MainPage : ContentPage
     {
@@ -24,7 +24,7 @@ namespace MauiApp1
             }
             if (Globals.DeviceMinutes != -1 && Globals.DeviceSeconds != -1)
             {
-                TimeLabel.Text = Globals.DeviceMinutes + " hr " + Globals.DeviceSeconds + " min";
+                TimeLabel.Text = Globals.DeviceMinutes + " hours, " + Globals.DeviceSeconds + " minutes";
             }
             if (Globals.DeviceStrength >= 10)
             {
@@ -33,6 +33,22 @@ namespace MauiApp1
             else
             {
                 StrengthValue.FontSize = 13;
+            }
+            if (!Globals.HasConnectedDevice)
+            {
+                connectedGlyph.Text = "\uf057";
+                connectedGlyph.TextColor = Color.FromArgb("CF6679");
+                connectedText.Text = "Disconnected";
+                connectedText.FontSize = 8;
+                connectedText.TextColor = Color.FromArgb("CF6679");
+            }
+            else
+            {
+                connectedGlyph.Text = "\uf058";
+                connectedGlyph.TextColor = Color.FromArgb("90EE90");
+                connectedText.Text = "Connected";
+                connectedText.FontSize = 9;
+                connectedText.TextColor = Color.FromArgb("90EE90");
             }
         }
         private async void OnBluetoothPageClicked(object sender, EventArgs e)
