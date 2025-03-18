@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.FirebaseLoginPage"
+             Title=""
+             Style="{DynamicResource DarkPageStyle}"
+             Shell.NavBarIsVisible="True">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label Text="Email" TextColor="White" FontSize="Medium" />
+        <Entry x:Name="EmailEntry" TextColor="White" Placeholder="Enter your email" Keyboard="Email" />
+
+        <Label Text="Password" TextColor="White" FontSize="Medium" />
+        <Entry x:Name="PasswordEntry" TextColor="White"  Placeholder="Enter your password" IsPassword="True" />
+
+        <Button Text="Login" Clicked="OnLoginClicked" />
+        <Button Text="Sign Up" Clicked="OnSignUpClicked" />
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWECap", "SWECap.csproj", "{A69ACB2C-EDEC-404D-9EFB-FB98DD9D57BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "..\UnitTestProject\UnitTestProject.csproj", "{CCF7E5C4-E050-452D-AC1D-E8EB18976F0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,6 +18,10 @@ Global
 		{A69ACB2C-EDEC-404D-9EFB-FB98DD9D57BE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{A69ACB2C-EDEC-404D-9EFB-FB98DD9D57BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A69ACB2C-EDEC-404D-9EFB-FB98DD9D57BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCF7E5C4-E050-452D-AC1D-E8EB18976F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF7E5C4-E050-452D-AC1D-E8EB18976F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF7E5C4-E050-452D-AC1D-E8EB18976F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF7E5C4-E050-452D-AC1D-E8EB18976F0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

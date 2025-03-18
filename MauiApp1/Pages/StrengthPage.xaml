@@ -5,7 +5,7 @@
              x:Class="MauiApp1.Pages.StrengthPage"
              Title=""
              Style="{DynamicResource DarkPageStyle}"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="True">
     <ScrollView>
     <VerticalStackLayout Padding="10" Spacing="10">
         <sf:SfSlider 

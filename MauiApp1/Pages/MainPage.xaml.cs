@@ -1,22 +1,33 @@
 ﻿using System.Diagnostics;
 using System.Security.AccessControl;
 using MauiApp1.Classes;
-namespace MauiApp1.Pages
+using MauiApp1.Classes.Models;
+namespace MauiApp1
 {
     public partial class MainPage : ContentPage
     {
         private System.Timers.Timer _timer;
         int count = 0;
         private readonly BluetoothManager bluetoothManager;
+        private readonly Firebase firebase;
+        private MainViewModel viewModel;
 
-        public MainPage()
+        public MainPage(Firebase firebaseParam)
         {
             InitializeComponent();
             bluetoothManager = BluetoothManager.Instance;
+            firebase = firebaseParam;
+            viewModel = new MainViewModel(firebaseParam);
+            BindingContext = viewModel;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            //Reloads viewmodel so that login/logout button can be updated to correct text.
+            viewModel.Initialize();
+
+
             if (Globals.DeviceStrength != -1)
             {
                 StrengthPointer.Value = Globals.DeviceStrength;
@@ -24,7 +35,7 @@ namespace MauiApp1.Pages
             }
             if (Globals.DeviceMinutes != -1 && Globals.DeviceSeconds != -1)
             {
-                TimeLabel.Text = Globals.DeviceMinutes + " hours, " + Globals.DeviceSeconds + " minutes";
+                TimeLabel.Text = Globals.DeviceMinutes + " hr " + Globals.DeviceSeconds + " min";
             }
             if (Globals.DeviceStrength >= 10)
             {
@@ -33,22 +44,6 @@ namespace MauiApp1.Pages
             else
             {
                 StrengthValue.FontSize = 13;
-            }
-            if (!Globals.HasConnectedDevice)
-            {
-                connectedGlyph.Text = "\uf057";
-                connectedGlyph.TextColor = Color.FromArgb("CF6679");
-                connectedText.Text = "Disconnected";
-                connectedText.FontSize = 8;
-                connectedText.TextColor = Color.FromArgb("CF6679");
-            }
-            else
-            {
-                connectedGlyph.Text = "\uf058";
-                connectedGlyph.TextColor = Color.FromArgb("90EE90");
-                connectedText.Text = "Connected";
-                connectedText.FontSize = 9;
-                connectedText.TextColor = Color.FromArgb("90EE90");
             }
         }
         private async void OnBluetoothPageClicked(object sender, EventArgs e)
@@ -83,6 +78,18 @@ namespace MauiApp1.Pages
             
         }
 
+        private async void OnPresetsClicked(object sender, EventArgs e)
+        {
+            bool isSignedIn = await firebase.IsUserSignedInAsync();
+            if (!isSignedIn)
+            {
+                await DisplayAlert("Unable to open presets page", "User not signed in", "OK");
+            }
+            else
+            {
+                await Shell.Current.GoToAsync("/PresetsPage");
+            }
+        }
     }
 
 }

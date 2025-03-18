@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui;
+﻿using MauiApp1.Services;
+using MauiApp1.Classes;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
 
@@ -9,16 +10,16 @@ namespace MauiApp1
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+            builder.Services.AddSingleton<ISecureStorageService, SecureStorageService>();
+            builder.Services.AddSingleton<Firebase>();
             builder
                 .UseMauiApp<App>()
                 .ConfigureSyncfusionCore()
-                .UseMauiCommunityToolkitMediaElement()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("FontAwesomeSolid.otf", "FontAwesomeSolid");
-                    fonts.AddFont("Montserrat-VariableFont_wght.ttf", "Montserrat");
                 });
 
 #if DEBUG

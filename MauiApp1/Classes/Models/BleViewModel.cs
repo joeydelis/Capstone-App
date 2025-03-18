@@ -45,7 +45,6 @@ namespace MauiApp1.Classes.Models
                 await bluetoothManager.Adapter.ConnectToDeviceAsync(device.Device);
 
                 device.IsConnected = true;
-                Globals.HasConnectedDevice = true;
                 bluetoothManager.ConnectedDevice = device;
 
             }
@@ -78,8 +77,6 @@ namespace MauiApp1.Classes.Models
              * Will need to test with multiple connections, which shouldn't be possible with app normally anyway.*/
             if (bluetoothManager.ConnectedDevice != null && bluetoothManager.ConnectedDevice.Device.Id == device.Device.Id)
             {
-                /* --<TODO>-- This is a not great way of doing this but if you change this to disconnect from device it just explodes.
-                 * Too tired to figure it out right now, will fix it at some point maybe. It technically works. */
                 await DisconnectFromDevice(bluetoothManager.ConnectedDevice);
                 device.IsConnected = false;
             }
