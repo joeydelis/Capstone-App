@@ -35,7 +35,7 @@ namespace MauiApp1.Pages
             }
             if (Globals.DeviceMinutes != -1 && Globals.DeviceSeconds != -1)
             {
-                TimeLabel.Text = Globals.DeviceMinutes + " hr " + Globals.DeviceSeconds + " min";
+                TimeLabel.Text = Globals.DeviceMinutes.ToString("D2") + ":" + Globals.DeviceSeconds.ToString("D2");
             }
             if (Globals.DeviceStrength >= 10)
             {

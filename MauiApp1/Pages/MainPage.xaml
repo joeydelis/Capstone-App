@@ -65,7 +65,7 @@
                     Grid.ColumnSpan="3"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="FillAndExpand">
-                    <Label Text="&#xf013; CONFIGURE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                    <Label Text="&#xf013; CONNECT" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
                 <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnBluetoothPageClicked"/>
                 </Border.GestureRecognizers>
@@ -79,10 +79,11 @@ Stroke="#262626"
                     StrokeShape="RoundRectangle 10,10,10,10"
                     HeightRequest="100"
                     Grid.Row="1"
-                    Grid.Column="3"
-                    Grid.ColumnSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="4"
                     Padding="5"
                     HorizontalOptions="FillAndExpand">
+                    <!--
                     <Grid>
                         <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent" InputTransparent="True">
                             <gauge:SfRadialGauge.Axes>
@@ -117,50 +118,60 @@ Stroke="#262626"
                VerticalOptions="Center"
                Margin="0,-75,0,0"/>
                     </Grid>
+                    -->
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnStrengthPageClicked"/>
                     </Border.GestureRecognizers>
                 </Border>
 
-                <!-- TIMER BOX -->
-            <Border x:Name="timerBox"
-                    BackgroundColor="#262626"
-                    Stroke="#262626"
-                    StrokeThickness="2"
-                    StrokeShape="RoundRectangle 10,10,10,10"
-                    HeightRequest="100"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
-                    Padding="20"
-                    HorizontalOptions="FillAndExpand">
-                    <Label Text="&#xf017; SET TIMER" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
-                </Border.GestureRecognizers>
-                </Border>
+                
         </Grid>
-        <!-- TIME DISPLAY BOX -->
+            <Grid RowDefinitions="Auto"
+  ColumnDefinitions="*, *, *, *"
+  ColumnSpacing="10"
+  RowSpacing="10"
+  VerticalOptions="CenterAndExpand" 
+  HorizontalOptions="CenterAndExpand">
+            <!-- TIMER BOX -->
+            <Border x:Name="timerBox"
+        BackgroundColor="#262626"
+        Stroke="#262626"
+        StrokeThickness="2"
+        StrokeShape="RoundRectangle 10,10,10,10"
+        HeightRequest="100"
+        Grid.Row="0"
+        Grid.Column="0"
+        Grid.ColumnSpan="3"
+        Padding="20"
+        HorizontalOptions="FillAndExpand">
+                <Label Text="&#xf017; SET TIMER" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
+                </Border.GestureRecognizers>
+            </Border>
+            
+            <!-- TIME DISPLAY BOX -->
             <Border x:Name="displayBox"
                 BackgroundColor="#262626"
                 Stroke="#262626"
                 StrokeThickness="2"
                 StrokeShape="RoundRectangle 10,10,10,10"
                 HeightRequest="100"
-                Grid.Row="2"
-                Grid.Column="1"
+                Grid.Row="0"
+                Grid.Column="3"
+                Grid.ColumnSpan="1"
                 Padding="20"
                 HorizontalOptions="FillAndExpand">
                 <Label HorizontalOptions="Center" VerticalOptions="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
-                            <Span x:Name="TimeLabel" Text="00 hr 00 min" FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
+                            <Span x:Name="TimeLabel" Text="00:00" FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
             </Border>
-            
+            </Grid>
             <!-- START BOX -->
             <Border x:Name="startBox"
                 BackgroundColor="#262626"
@@ -172,7 +183,7 @@ Stroke="#262626"
                 Grid.Column="0"
                 Padding="20"
                 HorizontalOptions="FillAndExpand">
-                <Label Text="ENABLE DEVICE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                <Label Text="START SESSION" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnEnableDeviceClicked"/>
                 </Border.GestureRecognizers>
