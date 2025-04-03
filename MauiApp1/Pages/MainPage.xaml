@@ -83,6 +83,7 @@ Stroke="#262626"
                     Grid.ColumnSpan="4"
                     Padding="5"
                     HorizontalOptions="FillAndExpand">
+                    <Label Text="&#xf013; CONFIGURE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
                     <!--
                     <Grid>
                         <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent" InputTransparent="True">

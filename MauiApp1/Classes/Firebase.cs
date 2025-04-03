@@ -42,6 +42,7 @@ namespace MauiApp1.Classes
             public string Name { get; set; }
             public int Time { get; set; }
             public int Strength { get; set; }
+            public int Position { get; set; }
             public string UserId { get; set; }
             public string Id { get; set; }
         }
@@ -137,6 +138,10 @@ namespace MauiApp1.Classes
                     {
                         integerValue = Globals.DeviceStrength
                     },
+                    position = new
+                    {
+                        integerValue = Globals.DevicePosition
+                    },
                     userId = new
                     {
                         stringValue = uuid
@@ -198,6 +203,7 @@ namespace MauiApp1.Classes
                                     Name = fields.GetProperty("name").GetProperty("stringValue").GetString(),
                                     Time = int.Parse(fields.GetProperty("time").GetProperty("integerValue").GetString()),
                                     Strength = int.Parse(fields.GetProperty("strength").GetProperty("integerValue").GetString()),
+                                    Position = int.Parse(fields.GetProperty("position").GetProperty("integerValue").GetString()),
                                     UserId = fields.GetProperty("userId").GetProperty("stringValue").GetString()
                                 });
                             }
@@ -297,9 +303,10 @@ namespace MauiApp1.Classes
             }
         }
 
-        public void LoadPreset(int time, int strength)
+        public void LoadPreset(int time, int strength, int position)
         {
             Globals.DeviceStrength = strength;
+            Globals.DevicePosition = position;
             Globals.DeviceMinutes = time / 60;
             Globals.DeviceSeconds = time % 60;
         }

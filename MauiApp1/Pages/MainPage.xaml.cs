@@ -30,8 +30,8 @@ namespace MauiApp1.Pages
 
             if (Globals.DeviceStrength != -1)
             {
-                StrengthPointer.Value = Globals.DeviceStrength;
-                StrengthValue.Text = Globals.DeviceStrength.ToString();
+                //StrengthPointer.Value = Globals.DeviceStrength;
+                //StrengthValue.Text = Globals.DeviceStrength.ToString();
             }
             if (Globals.DeviceMinutes != -1 && Globals.DeviceSeconds != -1)
             {
@@ -39,11 +39,11 @@ namespace MauiApp1.Pages
             }
             if (Globals.DeviceStrength >= 10)
             {
-                StrengthValue.FontSize = 11;
+                //StrengthValue.FontSize = 11;
             }
             else
             {
-                StrengthValue.FontSize = 13;
+                //StrengthValue.FontSize = 13;
             }
         }
         private async void OnBluetoothPageClicked(object sender, EventArgs e)
