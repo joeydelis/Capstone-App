@@ -7,40 +7,20 @@
              Style="{DynamicResource DarkPageStyle}"
              Shell.NavBarIsVisible="True">
     <ScrollView>
-    <VerticalStackLayout Padding="10" Spacing="10">
-        <sf:SfSlider 
-                     x:Name="StrengthSlider"
-                     ShowLabels="True"
-                     Minimum="0"
-                     Maximum="10"
-                     Interval="1"
-                     ShowTicks="True"
-                     Value="0"
-                     ValueChanged="SfSlider_ValueChanged">
-            <sf:SfSlider.TrackStyle>
-                <sf:SliderTrackStyle ActiveFill="LightGreen"
-                                     InactiveFill="#779977"
-                                     ActiveSize="10"
-                                     InactiveSize="8"/>
-            </sf:SfSlider.TrackStyle>
-            <sf:SfSlider.ThumbStyle>
-                <sf:SliderThumbStyle Radius="15"
-                                     Fill="GhostWhite"/>
-            </sf:SfSlider.ThumbStyle>
-            <sf:SfSlider.MajorTickStyle>
-                <sf:SliderTickStyle ActiveFill="LightGreen"
-                                    InactiveFill="#779977"/>
-            </sf:SfSlider.MajorTickStyle>
-            <sf:SfSlider.LabelStyle>
-                <sf:SliderLabelStyle ActiveTextColor="White"
-                                     InactiveTextColor="GhostWhite"/>
-            </sf:SfSlider.LabelStyle>
-        </sf:SfSlider>
-        <Label Text=" " VerticalOptions="FillAndExpand" Padding="50"/>
-        <Button Text="Set Strength"
-        VerticalOptions="EndAndExpand"
-        BackgroundColor="#262626"
-        Pressed="OnStrengthButtonPressed"/>
-    </VerticalStackLayout>
+        <VerticalStackLayout Padding="20" Spacing="10"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center">
+            <Button Text="Custom Input" Clicked="OnCustomClicked"
+                TextColor="White"
+                BackgroundColor="#262626"/>
+            <Button Text="circle-up" Clicked="OnUpClicked"
+                FontSize="40" TextColor="White" FontFamily="FontAwesomeSolid"
+                WidthRequest="100" HeightRequest="100"
+                BackgroundColor="#262626"/>
+            <Button Text="circle-down" Clicked="OnDownClicked"
+                FontSize="40" TextColor="White" FontFamily="FontAwesomeSolid"
+                WidthRequest="100" HeightRequest="100"
+                BackgroundColor="#262626"/>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

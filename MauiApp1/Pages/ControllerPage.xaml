@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.ControllerPage"
+             Title=""
+             Style="{DynamicResource DarkPageStyle}"
+             Shell.NavBarIsVisible="True">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+            <Button Text="circle-up" Clicked="OnUpClicked"
+                    FontSize="40" TextColor="White" FontFamily="FontAwesomeSolid"
+                    WidthRequest="100" HeightRequest="100"
+                    BackgroundColor="#262626"/>
+            <Button Text="circle-down" Clicked="OnDownClicked"
+                    FontSize="40" TextColor="White" FontFamily="FontAwesomeSolid"
+                    WidthRequest="100" HeightRequest="100"
+                    BackgroundColor="#262626"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

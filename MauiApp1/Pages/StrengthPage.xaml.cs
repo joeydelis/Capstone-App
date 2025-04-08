@@ -1,44 +1,66 @@
 using MauiApp1.Classes;
+using Plugin.BLE;
+using Plugin.BLE.Abstractions.Contracts;
 using Syncfusion.Maui.Sliders;
 
 namespace MauiApp1.Pages;
 
 public partial class StrengthPage : ContentPage
 {
-	readonly double sliderIncrement = 1;
-    int _internalStrength = -1;
+    private readonly BluetoothManager bluetoothManager;
+    private IService service;
+    private ICharacteristic characteristic;
+
 	public StrengthPage()
 	{
 		InitializeComponent();
+        bluetoothManager = BluetoothManager.Instance;
 	}
-    protected override void OnAppearing()
+
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        if (Globals.DeviceStrength != -1)
+
+        if (bluetoothManager.ConnectedDevice?.Device != null)
         {
-            _internalStrength = Globals.DeviceStrength;
-            StrengthSlider.Value = Globals.DeviceStrength;
+            bluetoothManager.DeviceDisconnected += OnDeviceDisconnected;
+
+            try
+            {
+                service = await bluetoothManager.ConnectedDevice.Device.GetServiceAsync(Guid.Parse("12345678-1234-5678-1234-56789abcdef0"));
+                characteristic = await service.GetCharacteristicAsync(Guid.Parse("abcd1234-5678-1234-5678-abcdef123456"));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Failed to load service or characteristic: {ex.Message}", "OK");
+            }
         }
     }
 
-    private void SfSlider_ValueChanged(object sender, Syncfusion.Maui.Sliders.SliderValueChangedEventArgs e)
+    private async void OnDeviceDisconnected(object sender, IDevice device)
     {
-        SfSlider slider = (SfSlider)sender;
-        double value = Math.Round(e.NewValue / sliderIncrement) * sliderIncrement;
-        slider.Value = value;
-        _internalStrength = (int)value;
-    }
-    private void OnStrengthButtonPressed(object sender, EventArgs e)
-    {
-        if (Globals.DeviceStrength != _internalStrength)
+        await MainThread.InvokeOnMainThreadAsync(async () =>
         {
-            Globals.DeviceStrength = _internalStrength;
-            DisplayAlert("Strength Set", $"Strength level set at {_internalStrength}", "OK");
-        }
+            await DisplayAlert("Disconnected", "Bluetooth device has been disconnected.", "OK");
+
+            await Shell.Current.Navigation.PopToRootAsync();
+        });
+    }
+    private async void OnUpClicked(object sender, EventArgs e)
+    {
+        await DisplayAlert("Up", "", "OK");
     }
 
-    private void Button_Pressed(object sender, EventArgs e)
+    private async void OnDownClicked(object sender, EventArgs e)
     {
+        await DisplayAlert("Down", "", "OK");
+    }
 
+    private async void OnCustomClicked(object sender, EventArgs e)
+    {
+         string input = await Application.Current.MainPage.DisplayPromptAsync("New Preset", "Enter command", "OK", "Cancel", "Ex: ON_0");
+         await characteristic.WriteAsync(System.Text.Encoding.UTF8.GetBytes(input));
+         var received = await characteristic.ReadAsync();
+         await DisplayAlert("Message Received", $"{System.Text.Encoding.UTF8.GetString(received.data)}", "OK");
     }
 }
