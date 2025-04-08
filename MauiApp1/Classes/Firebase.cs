@@ -68,6 +68,11 @@ namespace MauiApp1.Classes
 
         public async Task<bool> SignUpAsync(string email, string password)
         {
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Application.Current.MainPage.DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
+                return false;
+            }
             var payload = new {email, password, returnSecureToken = true};
             var json = JsonSerializer.Serialize(payload);
             var response = await _httpClient.PostAsync(SignUpUrl, new StringContent(json, Encoding.UTF8, "application/json"));
@@ -77,6 +82,11 @@ namespace MauiApp1.Classes
 
         public async Task<bool> SignInAsync(string email, string password)
         {
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Application.Current.MainPage.DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
+                return false;
+            }
             var payload = new { email, password, returnSecureToken = true };
             var json = JsonSerializer.Serialize(payload);
             var response = await _httpClient.PostAsync(SignInUrl, new StringContent(json, Encoding.UTF8, "application/json"));
@@ -98,6 +108,11 @@ namespace MauiApp1.Classes
 
         public async Task<bool> AddUserSetting(string name)
         {
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Application.Current.MainPage.DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
+                return false;
+            }
 
             /*
              * This chunk of code is in a couple functions because an auth token is required in the header to do crud operations.
