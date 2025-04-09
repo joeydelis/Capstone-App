@@ -53,7 +53,7 @@ namespace MauiApp1.Pages
             }
             else
             {
-                await Shell.Current.GoToAsync("/StrengthPage");
+                await Shell.Current.GoToAsync("/ControllerPage");
                 //var service = await bluetoothManager.ConnectedDevice.Device.GetServiceAsync(Guid.Parse("12345678-1234-5678-1234-56789abcdef0"));
                 //var characteristic = await service.GetCharacteristicAsync(Guid.Parse("abcd1234-5678-1234-5678-abcdef123456"));
                 //await characteristic.WriteAsync(System.Text.Encoding.UTF8.GetBytes("ON_0"));
