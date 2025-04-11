@@ -5,104 +5,122 @@
              xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
              Style="{DynamicResource DarkPageStyle}"
              Title=""
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="True">
 
 
     <ScrollView>
-        <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <VerticalStackLayout Spacing="10"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
 
             <!-- Login/Logout Button -->
-            <Button Text="{Binding LoginButtonText}" 
+            <Button Text="{Binding LoginButtonText}"
                     Command="{Binding LoginLogoutCommand}"
-                    BackgroundColor="#262626"
-                    />
+                    HeightRequest="10"
+                    TextColor="White"
+                    BackgroundColor="#262626"/>
 
             <Grid RowDefinitions="Auto, Auto"
-              ColumnDefinitions="*, *, *, *"
-              ColumnSpacing="10"
-              RowSpacing="10"
-              VerticalOptions="CenterAndExpand" 
-              HorizontalOptions="CenterAndExpand">
+                  ColumnDefinitions="*, *, *, *"
+                  ColumnSpacing="10"
+                  RowSpacing="10"
+                  VerticalOptions="CenterAndExpand"
+                  HorizontalOptions="CenterAndExpand">
 
-            <!-- INDICATOR BOX -->
-            <Border x:Name="indicatorBox"
-                BackgroundColor="#262626"
-                Stroke="#262626"
-                StrokeThickness="2"
-                StrokeShape="RoundRectangle 10,10,10,10"
-                WidthRequest="100"
-                HeightRequest="100"
-                Grid.Row="0"
-                Grid.Column="0"
-                Padding="20"
-                HorizontalOptions="CenterAndExpand">
+                <!-- INDICATOR BOX -->
+                <Border x:Name="indicatorBox"
+                        BackgroundColor="#262626"
+                        Stroke="#262626"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        WidthRequest="100"
+                        HeightRequest="100"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="20"
+                        HorizontalOptions="CenterAndExpand">
                     <StackLayout>
                         <Label Text="&#xf00c;"
-                                FontFamily="FontAwesomeSolid"
-                                FontSize="36"
-                                TextColor="LightGreen"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"/>
+                               FontFamily="FontAwesomeSolid"
+                               FontSize="36"
+                               TextColor="LightGreen"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
                         <Label Text="CONNECTED"
-                                FontFamily="FontAwesomeSolid"
-                                FontSize="7"
-                                TextColor="LightGreen"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"/>
+                               FontFamily="FontAwesomeSolid"
+                               FontSize="7"
+                               TextColor="LightGreen"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
                     </StackLayout>
                 </Border>
 
-            <!-- CONFIGURE BUTTON BOX -->
-            <Border x:Name="configureBox"
-                    BackgroundColor="#262626"
-                    Stroke="#262626"
-                    StrokeThickness="2"
-                    StrokeShape="RoundRectangle 10,10,10,10"
-                    Padding="20"
-                    HeightRequest="100"
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="3"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="FillAndExpand">
-                    <Label Text="&#xf013; CONFIGURE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
-                <Border.GestureRecognizers>
+                <!-- CONFIGURE BUTTON BOX -->
+                <Border x:Name="configureBox"
+                        BackgroundColor="#262626"
+                        Stroke="#262626"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        Padding="20"
+                        HeightRequest="100"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="3"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                    <Label Text="&#xf013; CONFIGURE"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="White"
+                           FontFamily="FontAwesomeSolid"
+                           FontSize="18"/>
+                    <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnBluetoothPageClicked"/>
-                </Border.GestureRecognizers>
+                    </Border.GestureRecognizers>
                 </Border>
 
                 <!-- STRENGTH BOX -->
                 <Border x:Name="strengthBox"
-                    BackgroundColor="#262626"
-Stroke="#262626"
-                    StrokeThickness="2"
-                    StrokeShape="RoundRectangle 10,10,10,10"
-                    HeightRequest="100"
-                    Grid.Row="1"
-                    Grid.Column="3"
-                    Grid.ColumnSpan="1"
-                    Padding="5"
-                    HorizontalOptions="FillAndExpand">
+                        BackgroundColor="#262626"
+                        Stroke="#262626"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        HeightRequest="100"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="1"
+                        Padding="5"
+                        HorizontalOptions="FillAndExpand">
                     <Grid>
-                        <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent" InputTransparent="True">
+                        <gauge:SfRadialGauge x:Name="StrengthGauge"
+                                             WidthRequest="80"
+                                             HeightRequest="80"
+                                             BackgroundColor="Transparent"
+                                             InputTransparent="True">
                             <gauge:SfRadialGauge.Axes>
                                 <gauge:RadialAxis Minimum="0"
-                                              Maximum="10"
-                                              ShowLabels="False"
-                                              ShowTicks="False"
-                                >
+                                                  Maximum="10"
+                                                  ShowLabels="False"
+                                                  ShowTicks="False">
                                     <gauge:RadialAxis.AxisLineStyle>
                                         <gauge:RadialLineStyle
-                                        CornerStyle="BothCurve"
-                                        Fill="#121212"/>
+                                            CornerStyle="BothCurve"
+                                            Fill="#121212"/>
                                     </gauge:RadialAxis.AxisLineStyle>
                                     <gauge:RadialAxis.Pointers>
-                                        <gauge:RangePointer x:Name="StrengthPointer" Value="0" Fill="LightGreen" CornerStyle="BothCurve"/>
+                                        <gauge:RangePointer x:Name="StrengthPointer"
+                                                            Value="0"
+                                                            Fill="LightGreen"
+                                                            CornerStyle="BothCurve"/>
                                     </gauge:RadialAxis.Pointers>
                                     <gauge:RadialAxis.Annotations>
                                         <gauge:GaugeAnnotation>
                                             <gauge:GaugeAnnotation.Content>
-                                                <Label x:Name="StrengthValue" FontFamily="FontAwesomeSolid" FontSize="11" Text="0" TextColor="LightGreen"/>
+                                                <Label x:Name="StrengthValue"
+                                                       FontFamily="FontAwesomeSolid"
+                                                       FontSize="11"
+                                                       Text="0"
+                                                       TextColor="LightGreen"/>
                                             </gauge:GaugeAnnotation.Content>
                                         </gauge:GaugeAnnotation>
                                     </gauge:RadialAxis.Annotations>
@@ -110,12 +128,12 @@ Stroke="#262626"
                             </gauge:SfRadialGauge.Axes>
                         </gauge:SfRadialGauge>
                         <Label Text="STRENGTH"
-               FontSize="10"
-               FontFamily="Montserrat"
-               TextColor="White"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
-               Margin="0,-75,0,0"/>
+                               FontSize="10"
+                               FontFamily="Montserrat"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Margin="0,-75,0,0"/>
                     </Grid>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnStrengthPageClicked"/>
@@ -123,56 +141,74 @@ Stroke="#262626"
                 </Border>
 
                 <!-- TIMER BOX -->
-            <Border x:Name="timerBox"
+                <Border x:Name="timerBox"
+                        BackgroundColor="#262626"
+                        Stroke="#262626"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        HeightRequest="100"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Padding="20"
+                        HorizontalOptions="FillAndExpand">
+                    <Label Text="&#xf017; SET TIMER"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="White"
+                           FontFamily="FontAwesomeSolid"
+                           FontSize="18"/>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
+                    </Border.GestureRecognizers>
+                </Border>
+            </Grid>
+            <!-- TIME DISPLAY BOX -->
+            <Border x:Name="displayBox"
                     BackgroundColor="#262626"
                     Stroke="#262626"
                     StrokeThickness="2"
                     StrokeShape="RoundRectangle 10,10,10,10"
                     HeightRequest="100"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
+                    Grid.Row="2"
+                    Grid.Column="1"
                     Padding="20"
                     HorizontalOptions="FillAndExpand">
-                    <Label Text="&#xf017; SET TIMER" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
-                </Border.GestureRecognizers>
-                </Border>
-        </Grid>
-        <!-- TIME DISPLAY BOX -->
-            <Border x:Name="displayBox"
-                BackgroundColor="#262626"
-                Stroke="#262626"
-                StrokeThickness="2"
-                StrokeShape="RoundRectangle 10,10,10,10"
-                HeightRequest="100"
-                Grid.Row="2"
-                Grid.Column="1"
-                Padding="20"
-                HorizontalOptions="FillAndExpand">
-                <Label HorizontalOptions="Center" VerticalOptions="Center">
+                <Label HorizontalOptions="Center"
+                       VerticalOptions="Center">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
-                            <Span x:Name="TimeLabel" Text="00 hr 00 min" FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
+                            <Span Text="&#xf017; "
+                                  FontFamily="FontAwesomeSolid"
+                                  FontSize="18"
+                                  TextColor="LightGreen"/>
+                            <Span x:Name="TimeLabel"
+                                  Text="00 hr 00 min"
+                                  FontFamily="FontAwesomeSolid"
+                                  FontSize="18"
+                                  TextColor="LightGreen"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
             </Border>
-            
+
             <!-- START BOX -->
             <Border x:Name="startBox"
-                BackgroundColor="#262626"
-                Stroke="#262626"
-                StrokeThickness="2"
-                StrokeShape="RoundRectangle 10,10,10,10"
-                HeightRequest="100"
-                Grid.Row="3"
-                Grid.Column="0"
-                Padding="20"
-                HorizontalOptions="FillAndExpand">
-                <Label Text="ENABLE DEVICE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                    BackgroundColor="#262626"
+                    Stroke="#262626"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    HeightRequest="100"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Padding="20"
+                    HorizontalOptions="FillAndExpand">
+                <Label Text="ENABLE DEVICE"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="White"
+                       FontFamily="FontAwesomeSolid"
+                       FontSize="18"/>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnEnableDeviceClicked"/>
                 </Border.GestureRecognizers>
@@ -180,16 +216,21 @@ Stroke="#262626"
 
             <!-- PRESETS BOX -->
             <Border x:Name="PresetsBox"
-                BackgroundColor="#262626"
-                Stroke="#262626"
-                StrokeThickness="2"
-                StrokeShape="RoundRectangle 10,10,10,10"
-                HeightRequest="100"
-                Grid.Row="3"
-                Grid.Column="0"
-                Padding="20"
-                HorizontalOptions="FillAndExpand">
-                <Label Text="USER PRESETS" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                    BackgroundColor="#262626"
+                    Stroke="#262626"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    HeightRequest="100"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Padding="20"
+                    HorizontalOptions="FillAndExpand">
+                <Label Text="USER PRESETS"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="White"
+                       FontFamily="FontAwesomeSolid"
+                       FontSize="18"/>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnPresetsClicked"/>
                 </Border.GestureRecognizers>

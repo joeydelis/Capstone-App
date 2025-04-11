@@ -7,26 +7,32 @@
              Shell.NavBarIsVisible="True">
     <ScrollView>
         <VerticalStackLayout>
-            <Button Text="Scan for Devices" Command="{Binding StartScanCommand}" BackgroundColor="#262626"/>
-            <ListView x:Name="BleListView" ItemsSource="{Binding Devices}">
+            <Button Text="Scan for Devices"
+                    Command="{Binding StartScanCommand}"
+                    HeightRequest="10"
+                    BackgroundColor="#262626"/>
+            <ListView x:Name="BleListView"
+                    ItemsSource="{Binding Devices}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding ="2.5" Spacing="10">
-                                <Label Text="{Binding Name}" 
-                                   VerticalOptions="Center" 
-                                   FontSize="16"
-                                   TextColor="White"
-                                   WidthRequest="200"/>
+                            <StackLayout Orientation="Horizontal"
+                                    Padding="2.5"
+                                    Spacing="10">
+                                <Label Text="{Binding Name}"
+                                       VerticalOptions="Center"
+                                       FontSize="16"
+                                       TextColor="White"
+                                       WidthRequest="200"/>
 
                                 <Button Text="{Binding ButtonText}"
-                                    BackgroundColor="#262626"
-                                    TextColor="White"
-                                    Command="{Binding BindingContext.ConnectCommand, Source={x:Reference BleListView}}" 
-                                    CommandParameter="{Binding}" 
-                                    FontSize="14"
-                                    Padding="10"
-                                    HorizontalOptions="EndAndExpand"/>
+                                        BackgroundColor="#262626"
+                                        TextColor="White"
+                                        Command="{Binding BindingContext.ConnectCommand, Source={x:Reference BleListView}}"
+                                        CommandParameter="{Binding}"
+                                        FontSize="14"
+                                        Padding="10"
+                                        HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
