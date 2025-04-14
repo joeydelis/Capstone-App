@@ -87,14 +87,4 @@ public partial class ControllerPage : ContentPage
             await DisplayAlert("Message Received", $"{System.Text.Encoding.UTF8.GetString(received.data)}", "OK");
         });
     }
-
-    private async void OnCustomClicked(object sender, EventArgs e)
-    {
-        string input = await Application.Current.MainPage.DisplayPromptAsync("New Preset", "Enter command", "OK", "Cancel", "Ex: ON_0");
-        if (string.IsNullOrWhiteSpace(input))
-            return;
-        await characteristic.WriteAsync(System.Text.Encoding.UTF8.GetBytes(input));
-        var received = await characteristic.ReadAsync();
-        await DisplayAlert("Message Received", $"{System.Text.Encoding.UTF8.GetString(received.data)}", "OK");
-    }
 }

@@ -5,21 +5,21 @@
              Title=""
              Style="{DynamicResource DarkPageStyle}"
              Shell.NavBarIsVisible="True">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center">
-            <Button Text="Custom Input" Clicked="OnCustomClicked"
-                TextColor="White"
-                BackgroundColor="#262626"/>
-            <Button Text="circle-up" Clicked="OnUpClicked"
+    <Grid RowDefinitions="*,Auto,Auto,*" Padding="20">
+        <BoxView Grid.Row="0"/>
+
+        <Button Grid.Row="1" Text="circle-up" Clicked="OnUpClicked"
                 FontSize="40" TextColor="White" FontFamily="FontAwesomeSolid"
-                WidthRequest="100" HeightRequest="100"
-                BackgroundColor="#262626"/>
-            <Button Text="circle-down" Clicked="OnDownClicked"
+                BackgroundColor="#262626"
+                HorizontalOptions="Fill"
+                HeightRequest="200"/>
+
+        <Button Grid.Row="2" Text="circle-down" Clicked="OnDownClicked"
                 FontSize="40" TextColor="White" FontFamily="FontAwesomeSolid"
-                WidthRequest="100" HeightRequest="100"
-                BackgroundColor="#262626"/>
-        </VerticalStackLayout>
-    </ScrollView>
+                BackgroundColor="#262626"
+                HorizontalOptions="Fill"
+                HeightRequest="200"/>
+
+        <BoxView Grid.Row="3"/>
+    </Grid>
 </ContentPage>
