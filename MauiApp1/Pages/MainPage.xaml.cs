@@ -63,20 +63,20 @@ namespace MauiApp1.Pages
 
         private async void OnEnableDeviceClicked(object sender, EventArgs e)
         {
-            // if (bluetoothManager.ConnectedDevice == null)
-            // {
-            //     await DisplayAlert("No Device Connected", "Please connect a device first.", "OK");
-            //     return;
-            // }
-            // else
-            // {
-            //     var service = await bluetoothManager.ConnectedDevice.Device.GetServiceAsync(Guid.Parse("12345678-1234-5678-1234-56789abcdef0"));
-            //     var characteristic = await service.GetCharacteristicAsync(Guid.Parse("abcd1234-5678-1234-5678-abcdef123456"));
-            //     await characteristic.WriteAsync(System.Text.Encoding.UTF8.GetBytes("ON_0"));
-            //     await characteristic.WriteAsync(System.Text.Encoding.UTF8.GetBytes($"BRIGHTNESS_0_{Globals.DeviceStrength * 10}"));
-            //     var received = await characteristic.ReadAsync();
-            //     await DisplayAlert("Message Received", $"{System.Text.Encoding.UTF8.GetString(received.data)}", "OK");
-            // }
+            if (bluetoothManager.ConnectedDevice == null)
+            {
+                await DisplayAlert("No Device Connected", "Please connect a device first.", "OK");
+                return;
+            }
+            else
+            {
+                var service = await bluetoothManager.ConnectedDevice.Device.GetServiceAsync(Guid.Parse("12345678-1234-5678-1234-56789abcdef0"));
+                var characteristic = await service.GetCharacteristicAsync(Guid.Parse("abcd1234-5678-1234-5678-abcdef123456"));
+                await characteristic.WriteAsync(System.Text.Encoding.UTF8.GetBytes("ON_0"));
+                await characteristic.WriteAsync(System.Text.Encoding.UTF8.GetBytes($"BRIGHTNESS_0_{Globals.DeviceStrength * 10}"));
+                var received = await characteristic.ReadAsync();
+                await DisplayAlert("Message Received", $"{System.Text.Encoding.UTF8.GetString(received.data)}", "OK");
+            }
 
         }
 
