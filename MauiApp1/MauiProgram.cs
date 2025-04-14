@@ -11,6 +11,7 @@ namespace MauiApp1
         {
             var builder = MauiApp.CreateBuilder();
             builder.Services.AddSingleton<ISecureStorageService, SecureStorageService>();
+            builder.Services.AddSingleton<IConnectivityService, ConnectivityService>();
             builder.Services.AddSingleton<Firebase>();
             builder
                 .UseMauiApp<App>()
