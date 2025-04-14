@@ -16,5 +16,9 @@
         Title="Instructions"
         ContentTemplate="{DataTemplate pages:InstructionsPage}"
         Route="InstructionsPage"/>
+    <ShellContent
+    Title="User Statistics"
+    ContentTemplate="{DataTemplate pages:DataPage}"
+    Route="DataPage"/>
 
 </Shell>
