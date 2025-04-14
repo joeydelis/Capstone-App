@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>MauiApp1</ApplicationTitle>
+		<ApplicationTitle>Mitigate</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.mauiapp1</ApplicationId>
@@ -43,7 +43,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-
+		<MauiIcon Include="Resources\AppIcon\newicon.svg" />
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
