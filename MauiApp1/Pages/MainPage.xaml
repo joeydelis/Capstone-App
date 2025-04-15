@@ -99,57 +99,21 @@ Stroke="#262626"
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <!--
-                    <Grid>
-                        <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent" InputTransparent="True">
-                            <gauge:SfRadialGauge.Axes>
-                                <gauge:RadialAxis Minimum="0"
-                                              Maximum="10"
-                                              ShowLabels="False"
-                                              ShowTicks="False"
-                                >
-                                    <gauge:RadialAxis.AxisLineStyle>
-                                        <gauge:RadialLineStyle
-                                        CornerStyle="BothCurve"
-                                        Fill="#121212"/>
-                                    </gauge:RadialAxis.AxisLineStyle>
-                                    <gauge:RadialAxis.Pointers>
-                                        <gauge:RangePointer x:Name="StrengthPointer" Value="0" Fill="LightGreen" CornerStyle="BothCurve"/>
-                                    </gauge:RadialAxis.Pointers>
-                                    <gauge:RadialAxis.Annotations>
-                                        <gauge:GaugeAnnotation>
-                                            <gauge:GaugeAnnotation.Content>
-                                                <Label x:Name="StrengthValue" FontFamily="FontAwesomeSolid" FontSize="11" Text="0" TextColor="LightGreen"/>
-                                            </gauge:GaugeAnnotation.Content>
-                                        </gauge:GaugeAnnotation>
-                                    </gauge:RadialAxis.Annotations>
-                                </gauge:RadialAxis>
-                            </gauge:SfRadialGauge.Axes>
-                        </gauge:SfRadialGauge>
-                        <Label Text="STRENGTH"
-               FontSize="10"
-               FontFamily="Montserrat"
-               TextColor="White"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
-               Margin="0,-75,0,0"/>
-                    </Grid>
-                    -->
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnStrengthPageClicked"/>
                     </Border.GestureRecognizers>
                 </Border>
 
-                
-        </Grid>
+
+            </Grid>
             <Grid RowDefinitions="Auto"
   ColumnDefinitions="*, *, *, *"
   ColumnSpacing="10"
   RowSpacing="10"
   VerticalOptions="CenterAndExpand" 
   HorizontalOptions="CenterAndExpand">
-            <!-- TIMER BOX -->
-            <Border x:Name="timerBox"
+                <!-- TIMER BOX -->
+                <Border x:Name="timerBox"
         BackgroundColor="#262626"
         Stroke="#262626"
         StrokeThickness="2"
@@ -169,12 +133,12 @@ Stroke="#262626"
                         </Label.FormattedText>
                     </Label>
                     <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
-                </Border.GestureRecognizers>
-            </Border>
-            
-            <!-- TIME DISPLAY BOX -->
-            <Border x:Name="displayBox"
+                        <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
+                    </Border.GestureRecognizers>
+                </Border>
+
+                <!-- TIME DISPLAY BOX -->
+                <Border x:Name="displayBox"
                 BackgroundColor="#262626"
                 Stroke="#262626"
                 StrokeThickness="2"
@@ -185,15 +149,15 @@ Stroke="#262626"
                 Grid.ColumnSpan="1"
                 Padding="20"
                 HorizontalOptions="FillAndExpand">
-                <Label HorizontalOptions="Center" VerticalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
-                            <Span x:Name="TimeLabel" Text="00:00" FontFamily="Montserrat" FontSize="18" TextColor="LightGreen"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </Border>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
+                                <Span x:Name="TimeLabel" Text="00:00" FontFamily="Montserrat" FontSize="18" TextColor="LightGreen"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Border>
             </Grid>
             <!-- START BOX -->
             <Border x:Name="startBox"
