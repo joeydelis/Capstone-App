@@ -85,6 +85,23 @@ The code for various screens in the app is located in the `MauiApp1/Pages` folde
 
 ---
 
+## Syncfusion
+
+- The UI for this app uses **Syncfusion** for some of its widgets.
+- This is implemented in various classes, such as `StrengthPage`
+
+- Syncfusion and its documentation can be found [here](https://www.syncfusion.com/).
+
+---
+
+## FontAwesome
+
+- The UI for this app uses glyphs and icons by **FontAwesome**.
+
+- FontAwesome and its documentation can be found [here](https://fontawesome.com/start).
+
+---
+
 ## Testing
 
 - Unit tests are located in the `UnitTestProject` folder and written using **JUnit**.
