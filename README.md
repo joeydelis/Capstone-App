@@ -110,5 +110,3 @@ The code for various screens in the app is located in the `MauiApp1/Pages` folde
 - Tests interact with the Firebase database but use mock secure storage and mock connectivity.
 
 ---
-
-Let me know if you'd like help generating a `LICENSE` or CI/CD workflow section, or setting up GitHub Actions for automated testing!
