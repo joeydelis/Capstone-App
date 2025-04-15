@@ -15,7 +15,7 @@
                 StrokeShape="RoundRectangle 10,10,10,10">
             <picker:SfTimePicker x:Name="TimePicker"
                                  TextDisplayMode="Fade"
-                                 Format="H_mm"
+                                 Format="H_mm_ss"
                                  MaximumTime="1:00:0"
                                  BackgroundColor="#262626"
                                  SelectionChanged="OnPickerChanged">

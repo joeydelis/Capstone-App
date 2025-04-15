@@ -27,8 +27,8 @@ public partial class TimerPage : ContentPage
     private void OnPickerChanged(object sender, TimePickerSelectionChangedEventArgs e)
     {
         TimeSpan time = e.NewValue.Value;
-        _internalHour = time.Hours;
-        _internalMinute = time.Minutes;
+        _internalHour = time.Hours * 60 + time.Minutes;
+        _internalMinute = time.Seconds;
     }
     private void OnSetTimerClicked(object sender, EventArgs e)
     {
@@ -36,7 +36,7 @@ public partial class TimerPage : ContentPage
         {
             Globals.DeviceMinutes = _internalHour;
             Globals.DeviceSeconds = _internalMinute;
-            DisplayAlert("Timer Set", $"Timer set for {_internalHour} hour(s) and {_internalMinute} minutes", "OK");
+            DisplayAlert("Timer Set", $"Timer set for {_internalHour} minute(s) and {_internalMinute} second(s)", "OK");
         }
         else
         {

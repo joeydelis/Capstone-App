@@ -153,7 +153,7 @@ Stroke="#262626"
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
-                                <Span x:Name="TimeLabel" Text="00:00" FontFamily="Montserrat" FontSize="18" TextColor="LightGreen"/>
+                                <Span x:Name="TimeLabel" Text="00:00" FontFamily="Montserrat" FontSize="15" TextColor="LightGreen"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>

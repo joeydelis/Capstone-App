@@ -27,6 +27,7 @@ namespace MauiApp1.Pages
 
             //Reloads viewmodel so that login/logout button can be updated to correct text.
             viewModel.Initialize();
+            TimeLabel.Text = $"{Globals.DeviceMinutes:D2}:{Globals.DeviceSeconds:D2}";
 
         }
         private async void OnBluetoothPageClicked(object sender, EventArgs e)

@@ -25,7 +25,7 @@
             </HorizontalStackLayout>
         
         <Label Text=" " VerticalOptions="FillAndExpand" Padding="50"/>
-        <Button Text="Set Strength"
+        <Button Text="Configure"
         VerticalOptions="EndAndExpand"
         BackgroundColor="#262626"
         Pressed="OnStrengthButtonPressed"/>
