@@ -5,7 +5,7 @@
              x:Class="MauiApp1.Pages.InstructionsPage"
              Style="{DynamicResource DarkPageStyle}"
              Title=""
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="True">
     <VerticalStackLayout>
         <Label 
             Text="This page contains instructions on how to use each page within the app for use with the therapy device. A video showcasing the pages will be added at a later date."

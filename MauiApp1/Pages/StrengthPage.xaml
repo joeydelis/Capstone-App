@@ -8,6 +8,22 @@
              Shell.NavBarIsVisible="True">
     <ScrollView>
     <VerticalStackLayout Padding="10" Spacing="10">
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="50">
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+                    <Label Text="Strength" FontSize="24" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Text="+" Clicked="OnIncreaseClicked1" BackgroundColor="#262626"/>
+                    <Label x:Name="StrengthDisplay" Text="0" FontSize="24" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Text="-" Clicked="OnDecreaseClicked1" BackgroundColor="#262626"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+                    <Label Text="Position" FontSize="24" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Text="+" Clicked="OnIncreaseClicked2" BackgroundColor="#262626"/>
+                    <Label x:Name="PositionDisplay" Text="0" FontSize="24" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Text="-" Clicked="OnDecreaseClicked2" BackgroundColor="#262626"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+            <!--
         <sf:SfSlider 
                      x:Name="StrengthSlider"
                      ShowLabels="True"
@@ -36,6 +52,8 @@
                                      InactiveTextColor="GhostWhite"/>
             </sf:SfSlider.LabelStyle>
         </sf:SfSlider>
+        -->
+        
         <Label Text=" " VerticalOptions="FillAndExpand" Padding="50"/>
         <Button Text="Set Strength"
         VerticalOptions="EndAndExpand"
