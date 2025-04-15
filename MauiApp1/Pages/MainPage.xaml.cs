@@ -2,6 +2,7 @@
 using System.Security.AccessControl;
 using MauiApp1.Classes;
 using MauiApp1.Classes.Models;
+using Plugin.BLE.Abstractions.Contracts;
 namespace MauiApp1.Pages
 {
     public partial class MainPage : ContentPage
@@ -52,9 +53,16 @@ namespace MauiApp1.Pages
             }
             else
             {
+                IService service = await bluetoothManager.ConnectedDevice.Device.GetServiceAsync(Guid.Parse("c93e8091-1b04-4258-8ac2-2588e890e121"));
+                ICharacteristic characteristic = await service.GetCharacteristicAsync(Guid.Parse("e7467b73-034c-4f44-8afc-4cac0be2db0b"));
+
+                int time = (((Globals.DeviceMinutes * 60) + Globals.DeviceSeconds) * 60);
+
+                await characteristic.WriteAsync(System.Text.Encoding.UTF8.GetBytes($"Timer_{time}"));
+                var received = await characteristic.ReadAsync();
+
                 await Shell.Current.GoToAsync("/ControllerPage");
             }
-
         }
 
         private async void OnPresetsClicked(object sender, EventArgs e)

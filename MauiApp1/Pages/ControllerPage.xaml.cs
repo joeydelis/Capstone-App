@@ -30,8 +30,8 @@ public partial class ControllerPage : ContentPage
 
             try
             {
-                service = await bluetoothManager.ConnectedDevice.Device.GetServiceAsync(Guid.Parse("12345678-1234-5678-1234-56789abcdef0"));
-                characteristic = await service.GetCharacteristicAsync(Guid.Parse("abcd1234-5678-1234-5678-abcdef123456"));
+                service = await bluetoothManager.ConnectedDevice.Device.GetServiceAsync(Guid.Parse("c93e8091-1b04-4258-8ac2-2588e890e121"));
+                characteristic = await service.GetCharacteristicAsync(Guid.Parse("e7467b73-034c-4f44-8afc-4cac0be2db0b"));
             }
             catch (Exception ex)
             {

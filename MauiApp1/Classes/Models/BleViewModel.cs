@@ -27,7 +27,7 @@ namespace MauiApp1.Classes.Models
             bluetoothManager.Adapter.DeviceDiscovered += (s, e) =>
             {
                 //Make sure to update name if it is changed in Arduino code
-                if (!string.IsNullOrEmpty(e.Device.Name) && (e.Device.Name) == "ESP32_BLE_Server" && !Devices.Any(d => d.Device.Id == e.Device.Id))
+                if (!string.IsNullOrEmpty(e.Device.Name) && !Devices.Any(d => d.Device.Id == e.Device.Id))
                 {
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
