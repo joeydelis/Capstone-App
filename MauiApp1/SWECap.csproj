@@ -21,10 +21,10 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>MauiApp1</ApplicationTitle>
+		<ApplicationTitle>Mitigate</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.mauiapp1</ApplicationId>
+		<ApplicationId>com.migrainemitigators.mauiapp1</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -43,8 +43,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-
+		<MauiIcon Include="Resources\AppIcon\newicon.svg" />
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
@@ -61,7 +60,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.60" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 		<PackageReference Include="Plugin.BLE" Version="3.1.0" />
 		<PackageReference Include="Syncfusion.Maui.Core" Version="28.2.5" />
@@ -98,6 +97,9 @@
 	  <MauiXaml Update="Pages\BluetoothConnectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\DataPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\FirebaseSignUpPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -113,6 +115,30 @@
 	  <MauiXaml Update="Pages\StrengthPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+	  <PackageReference Include="CommunityToolkit.Maui.MediaElement">
+	    <Version>6.0.2</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
+	  <PackageReference Include="CommunityToolkit.Maui.MediaElement">
+	    <Version>6.0.2</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-maccatalyst'">
+	  <PackageReference Include="CommunityToolkit.Maui.MediaElement">
+	    <Version>6.0.2</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-windows10.0.19041.0'">
+	  <PackageReference Include="CommunityToolkit.Maui.MediaElement">
+	    <Version>6.0.2</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 </Project>

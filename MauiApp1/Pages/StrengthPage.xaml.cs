@@ -5,13 +5,13 @@ namespace MauiApp1.Pages;
 
 public partial class StrengthPage : ContentPage
 {
-    readonly double sliderIncrement = 1;
+	readonly double sliderIncrement = 1;
     int _internalStrength = -1;
     int _internalPosition = -1;
-    public StrengthPage()
-    {
-        InitializeComponent();
-    }
+	public StrengthPage()
+	{
+		InitializeComponent();
+	}
     protected override void OnAppearing()
     {
         base.OnAppearing();

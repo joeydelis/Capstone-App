@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Pages.MainPage"
              xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
              Style="{DynamicResource DarkPageStyle}"
              Title=""
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="True">
 
 
     <ScrollView>
@@ -15,6 +15,7 @@
             <Button Text="{Binding LoginButtonText}" 
                     Command="{Binding LoginLogoutCommand}"
                     BackgroundColor="#262626"
+                    FontFamily="Montserrat"
                     />
 
             <Grid RowDefinitions="Auto, Auto"
@@ -24,8 +25,8 @@
               VerticalOptions="CenterAndExpand" 
               HorizontalOptions="CenterAndExpand">
 
-                <!-- INDICATOR BOX -->
-                <Border x:Name="indicatorBox"
+            <!-- INDICATOR BOX -->
+            <Border x:Name="indicatorBox"
                 BackgroundColor="#262626"
                 Stroke="#262626"
                 StrokeThickness="2"
@@ -44,7 +45,7 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"/>
                         <Label Text="CONNECTED"
-                                FontFamily="FontAwesomeSolid"
+                                FontFamily="Montserrat"
                                 FontSize="7"
                                 TextColor="LightGreen"
                                 HorizontalOptions="Center"
@@ -52,8 +53,8 @@
                     </StackLayout>
                 </Border>
 
-                <!-- CONFIGURE BUTTON BOX -->
-                <Border x:Name="configureBox"
+            <!-- CONFIGURE BUTTON BOX -->
+            <Border x:Name="configureBox"
                     BackgroundColor="#262626"
                     Stroke="#262626"
                     StrokeThickness="2"
@@ -65,10 +66,17 @@
                     Grid.ColumnSpan="3"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="FillAndExpand">
-                    <Label Text="&#xf013; CONNECT" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="&#xf013; " FontFamily="FontAwesomeSolid" TextColor="White" FontSize="18"/>
+                                <Span Text="Connect" FontFamily="Montserrat" TextColor="White" FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnBluetoothPageClicked"/>
-                    </Border.GestureRecognizers>
+                </Border.GestureRecognizers>
                 </Border>
 
                 <!-- STRENGTH BOX -->
@@ -83,7 +91,14 @@ Stroke="#262626"
                     Grid.ColumnSpan="4"
                     Padding="5"
                     HorizontalOptions="FillAndExpand">
-                    <Label Text="&#xf013; CONFIGURE" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="&#xf013; " FontFamily="FontAwesomeSolid" TextColor="White" FontSize="18"/>
+                                <Span Text="Configure" FontFamily="Montserrat" TextColor="White" FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                     <!--
                     <Grid>
                         <gauge:SfRadialGauge x:Name="StrengthGauge" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent" InputTransparent="True">
@@ -125,16 +140,16 @@ Stroke="#262626"
                     </Border.GestureRecognizers>
                 </Border>
 
-
-            </Grid>
+                
+        </Grid>
             <Grid RowDefinitions="Auto"
   ColumnDefinitions="*, *, *, *"
   ColumnSpacing="10"
   RowSpacing="10"
   VerticalOptions="CenterAndExpand" 
   HorizontalOptions="CenterAndExpand">
-                <!-- TIMER BOX -->
-                <Border x:Name="timerBox"
+            <!-- TIMER BOX -->
+            <Border x:Name="timerBox"
         BackgroundColor="#262626"
         Stroke="#262626"
         StrokeThickness="2"
@@ -145,14 +160,21 @@ Stroke="#262626"
         Grid.ColumnSpan="3"
         Padding="20"
         HorizontalOptions="FillAndExpand">
-                    <Label Text="&#xf017; SET TIMER" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" TextColor="White" FontSize="18"/>
+                                <Span Text="Set Timer" FontFamily="Montserrat" TextColor="White" FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
-                    </Border.GestureRecognizers>
-                </Border>
-
-                <!-- TIME DISPLAY BOX -->
-                <Border x:Name="displayBox"
+                    <TapGestureRecognizer Tapped="OnTimerPageClicked"/>
+                </Border.GestureRecognizers>
+            </Border>
+            
+            <!-- TIME DISPLAY BOX -->
+            <Border x:Name="displayBox"
                 BackgroundColor="#262626"
                 Stroke="#262626"
                 StrokeThickness="2"
@@ -163,15 +185,15 @@ Stroke="#262626"
                 Grid.ColumnSpan="1"
                 Padding="20"
                 HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" VerticalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
-                                <Span x:Name="TimeLabel" Text="00:00" FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Border>
+                <Label HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#xf017; " FontFamily="FontAwesomeSolid" FontSize="18" TextColor="LightGreen"/>
+                            <Span x:Name="TimeLabel" Text="00:00" FontFamily="Montserrat" FontSize="18" TextColor="LightGreen"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Border>
             </Grid>
             <!-- START BOX -->
             <Border x:Name="startBox"
@@ -184,7 +206,7 @@ Stroke="#262626"
                 Grid.Column="0"
                 Padding="20"
                 HorizontalOptions="FillAndExpand">
-                <Label Text="START SESSION" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="18"/>
+                <Label Text="Start Session" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="Montserrat" FontSize="18"/>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnEnableDeviceClicked"/>
                 </Border.GestureRecognizers>
@@ -201,7 +223,14 @@ Stroke="#262626"
                 Grid.Column="0"
                 Padding="20"
                 HorizontalOptions="FillAndExpand">
-                <Label Text="USER PRESETS" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="FontAwesomeSolid" FontSize="18"/>
+                <Label HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="USER " FontFamily="FontAwesomeSolid" TextColor="White" FontSize="18"/>
+                            <Span Text="User Presets" FontFamily="Montserrat" TextColor="White" FontSize="18"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnPresetsClicked"/>
                 </Border.GestureRecognizers>

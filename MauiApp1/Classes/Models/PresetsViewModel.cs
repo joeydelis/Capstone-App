@@ -114,9 +114,9 @@ namespace MauiApp1.Classes.Models
 
             if (preset == null) return;
 
-            firebase.LoadPreset(preset.Time, preset.Strength);
+            firebase.LoadPreset(preset.Time, preset.Strength, preset.Position);
 
-            await Application.Current.MainPage.DisplayAlert("Preset loaded!", $"Time: {(Globals.DeviceMinutes * 60) + Globals.DeviceSeconds} minutes\n Strength: {preset.Strength}", "Ok");
+            await Application.Current.MainPage.DisplayAlert("Preset loaded!", $"Time: {(Globals.DeviceMinutes * 60) + Globals.DeviceSeconds} minutes\n Strength: {preset.Strength}\n Position: {preset.Position}", "Ok");
 
         }
     }

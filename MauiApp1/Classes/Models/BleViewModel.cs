@@ -26,9 +26,13 @@ namespace MauiApp1.Classes.Models
             //Used when device is found from StartScanningAsync. Adds discovered device if it meets specified criteria
             bluetoothManager.Adapter.DeviceDiscovered += (s, e) =>
             {
-                if (!string.IsNullOrEmpty(e.Device.Name) && !Devices.Any(d => d.Device.Id == e.Device.Id))
+                //Make sure to update name if it is changed in Arduino code
+                if (!string.IsNullOrEmpty(e.Device.Name) && (e.Device.Name) == "ESP32_BLE_Server" && !Devices.Any(d => d.Device.Id == e.Device.Id))
                 {
-                    Devices.Add(new DeviceViewModel(e.Device));
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        Devices.Add(new DeviceViewModel(e.Device));
+                    });
                 }
             };
 
@@ -90,8 +94,6 @@ namespace MauiApp1.Classes.Models
         {
             if (device == null) return;
 
-            /* Should probably be changed to compare to BLE plugin connected devices list instead. Honestly all connection checks probably should be.
-             * Will need to test with multiple connections, which shouldn't be possible with app normally anyway.*/
             if (bluetoothManager.ConnectedDevice != null && bluetoothManager.ConnectedDevice.Device.Id == device.Device.Id)
             {
                 await DisconnectFromDevice(bluetoothManager.ConnectedDevice);
@@ -131,7 +133,6 @@ namespace MauiApp1.Classes.Models
             Devices.Clear();
 
             //After clearing list, check to see if device is already connected from previous scans.
-            //Should probably add check here to only display devices with correct name. Will prevent the need for a bunch of annoying validation stuff.
             if (bluetoothManager.ConnectedDevice != null)
             {
                 var ConnectedDevices = bluetoothManager.Adapter.GetSystemConnectedOrPairedDevices();

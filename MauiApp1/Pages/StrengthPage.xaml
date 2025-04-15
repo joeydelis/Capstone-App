@@ -7,7 +7,7 @@
              Style="{DynamicResource DarkPageStyle}"
              Shell.NavBarIsVisible="True">
     <ScrollView>
-        <VerticalStackLayout Padding="10" Spacing="10">
+    <VerticalStackLayout Padding="10" Spacing="10">
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="50">
                 <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
                     <Label Text="Strength" FontSize="24" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
@@ -23,42 +23,12 @@
                     <Button Text="-" Clicked="OnDecreaseClicked2" BackgroundColor="#262626"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
-            <!--
-        <sf:SfSlider 
-                     x:Name="StrengthSlider"
-                     ShowLabels="True"
-                     Minimum="0"
-                     Maximum="10"
-                     Interval="1"
-                     ShowTicks="True"
-                     Value="0"
-                     ValueChanged="SfSlider_ValueChanged">
-            <sf:SfSlider.TrackStyle>
-                <sf:SliderTrackStyle ActiveFill="LightGreen"
-                                     InactiveFill="#779977"
-                                     ActiveSize="10"
-                                     InactiveSize="8"/>
-            </sf:SfSlider.TrackStyle>
-            <sf:SfSlider.ThumbStyle>
-                <sf:SliderThumbStyle Radius="15"
-                                     Fill="GhostWhite"/>
-            </sf:SfSlider.ThumbStyle>
-            <sf:SfSlider.MajorTickStyle>
-                <sf:SliderTickStyle ActiveFill="LightGreen"
-                                    InactiveFill="#779977"/>
-            </sf:SfSlider.MajorTickStyle>
-            <sf:SfSlider.LabelStyle>
-                <sf:SliderLabelStyle ActiveTextColor="White"
-                                     InactiveTextColor="GhostWhite"/>
-            </sf:SfSlider.LabelStyle>
-        </sf:SfSlider>
-        -->
-
-            <Label Text=" " VerticalOptions="FillAndExpand" Padding="50"/>
-            <Button Text="Set Strength"
+        
+        <Label Text=" " VerticalOptions="FillAndExpand" Padding="50"/>
+        <Button Text="Set Strength"
         VerticalOptions="EndAndExpand"
         BackgroundColor="#262626"
         Pressed="OnStrengthButtonPressed"/>
-        </VerticalStackLayout>
+    </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -1,4 +1,9 @@
-﻿namespace MauiApp1
+﻿using MauiApp1.Classes;
+using MauiApp1.Pages;
+using MauiApp1.Services;
+using Microsoft.Maui;
+
+namespace MauiApp1
 {
     public partial class App : Application
     {
