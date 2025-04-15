@@ -7,12 +7,14 @@ namespace UnitTestProject
 
         private readonly Firebase firebase;
         private readonly MockSecureStorageService secureStorageService;
+        private readonly MockConnectivityService connectivityService;
         private readonly string testEmail = "test123@gmail.com";
         private readonly string testPassword = "test123";
         public UnitTest1()
         {
             secureStorageService = new MockSecureStorageService();
-            firebase = new Firebase(secureStorageService);
+            connectivityService = new MockConnectivityService();
+            firebase = new Firebase(secureStorageService, connectivityService);
         }
 
         [Fact]

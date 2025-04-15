@@ -18,6 +18,16 @@ namespace MauiApp1.Pages
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
+            if(Connectivity.NetworkAccess != NetworkAccess.Internet) {
+                await DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
+                return;
+            }
+
+            if (EmailEntry.Text == null || PasswordEntry.Text == null)
+            {
+                return;
+            }
+
             string email = EmailEntry.Text.Trim();
             string password = PasswordEntry.Text;
 

@@ -44,18 +44,35 @@ namespace MauiApp1.Classes.Models
         {
             if (device == null) return;
 
-            try
-            {
-                await bluetoothManager.Adapter.ConnectToDeviceAsync(device.Device);
+            //Can adjust if still having issues with connecting.
+            const int maxRetries = 1;
+            const int retyDelay = 500;
 
-                device.IsConnected = true;
-                bluetoothManager.ConnectedDevice = device;
-
-            }
-            catch (Exception ex)
+            //This helps with errors like Gatt 133 that can cause issues on first connection but typically resolve on reconnect.
+            for(int attempt = 0; attempt <= maxRetries; attempt++)
             {
-                await Shell.Current.DisplayAlert("Connection Failed", $"Could not connect to {device.Name}. Error: {ex.Message}", "OK");
+                try
+                {
+                    await bluetoothManager.Adapter.ConnectToDeviceAsync(device.Device);
+
+                    device.IsConnected = true;
+                    bluetoothManager.ConnectedDevice = device;
+
+                    //Exit after succesful connection
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    if (attempt == maxRetries)
+                    {
+                        await Shell.Current.DisplayAlert("Connection Failed", $"Could not connect to {device.Name}. Error: {ex.Message}", "OK");
+                    } else
+                    {
+                        await Task.Delay(retyDelay);
+                    }
+                }
             }
+
         }
 
         private async Task DisconnectFromDevice(DeviceViewModel device)

@@ -73,6 +73,9 @@
 	  <Compile Update="Pages\BluetoothConnectionPage.xaml.cs">
 	    <DependentUpon>BluetoothConnectionPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\ControllerPage.xaml.cs">
+	    <DependentUpon>ControllerPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\TimerPage.xaml.cs">
 	    <DependentUpon>TimerPage.xaml</DependentUpon>
 	  </Compile>
@@ -101,6 +104,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\PresetsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ControllerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TimerPage.xaml">

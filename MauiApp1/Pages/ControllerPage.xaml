@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.ControllerPage"
+             Title=""
+             Style="{DynamicResource DarkPageStyle}"
+             Shell.NavBarIsVisible="True">
+    <Grid RowDefinitions="*,Auto,Auto,*" Padding="20">
+        <BoxView Grid.Row="0"/>
+
+        <Button Grid.Row="1" Text="circle-up" Clicked="OnUpClicked"
+                FontSize="40" TextColor="White" FontFamily="FontAwesomeSolid"
+                BackgroundColor="#262626"
+                HorizontalOptions="Fill"
+                HeightRequest="200"/>
+
+        <Button Grid.Row="2" Text="circle-down" Clicked="OnDownClicked"
+                FontSize="40" TextColor="White" FontFamily="FontAwesomeSolid"
+                BackgroundColor="#262626"
+                HorizontalOptions="Fill"
+                HeightRequest="200"/>
+
+        <BoxView Grid.Row="3"/>
+    </Grid>
+</ContentPage>

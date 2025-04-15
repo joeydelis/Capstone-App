@@ -55,12 +55,8 @@ namespace MauiApp1.Classes.Models
                 bool userNowSignedIn = await firebase.IsUserSignedInAsync();
                 if (userNowSignedIn)
                 {
-                    Console.WriteLine("User is signedin");
                     LoginButtonText = "Logout";
-                } else
-                {
-                    Console.WriteLine("User is NOT signed in");
-                }
+                } 
             }
         }
 

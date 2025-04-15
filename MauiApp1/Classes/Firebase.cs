@@ -13,6 +13,7 @@ namespace MauiApp1.Classes
     {
         
         private readonly ISecureStorageService secureStorage;
+        private readonly IConnectivityService connectivityService;
 
         private const string ApiKey = "AIzaSyDLzy3mB2vWXGECc184LGdR9cKPQJar84w";
         private const string projectId = "capstone-fb6b0";
@@ -24,10 +25,11 @@ namespace MauiApp1.Classes
         private const string CollectionUrl = $"https://firestore.googleapis.com/v1/projects/{projectId}/databases/(default)/documents/{collection}?key={ApiKey}";
         private const string RefreshUrl = $"https://securetoken.googleapis.com/v1/token?key={ApiKey}";
 
-        //Can't use securestorage in unit tests so need to use dependency injection so that you can mock it
-        public Firebase(ISecureStorageService secureStorageService) 
+        //Can't use securestorage or connectivity in unit tests so need to use dependency injection so that you can mock them
+        public Firebase(ISecureStorageService secureStorageService, IConnectivityService connectivity) 
         {
             secureStorage = secureStorageService;
+            connectivityService = connectivity;
         }
 
         private class AuthResponse
@@ -69,6 +71,11 @@ namespace MauiApp1.Classes
 
         public async Task<bool> SignUpAsync(string email, string password)
         {
+            if (!connectivityService.IsConnectedToInternet())
+            {
+                await Application.Current.MainPage.DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
+                return false;
+            }
             var payload = new {email, password, returnSecureToken = true};
             var json = JsonSerializer.Serialize(payload);
             var response = await _httpClient.PostAsync(SignUpUrl, new StringContent(json, Encoding.UTF8, "application/json"));
@@ -78,6 +85,11 @@ namespace MauiApp1.Classes
 
         public async Task<bool> SignInAsync(string email, string password)
         {
+            if (!connectivityService.IsConnectedToInternet())
+            {
+                await Application.Current.MainPage.DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
+                return false;
+            }
             var payload = new { email, password, returnSecureToken = true };
             var json = JsonSerializer.Serialize(payload);
             var response = await _httpClient.PostAsync(SignInUrl, new StringContent(json, Encoding.UTF8, "application/json"));
@@ -99,6 +111,11 @@ namespace MauiApp1.Classes
 
         public async Task<bool> AddUserSetting(string name)
         {
+            if (!connectivityService.IsConnectedToInternet())
+            {
+                await Application.Current.MainPage.DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
+                return false;
+            }
 
             /*
              * This chunk of code is in a couple functions because an auth token is required in the header to do crud operations.

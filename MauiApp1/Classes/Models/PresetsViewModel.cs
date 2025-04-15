@@ -47,22 +47,37 @@ namespace MauiApp1.Classes.Models
 
         private async void LoadPresets()
         {
-            var presets = await firebase.GetUserPresetsAsync();
-            if (presets != null)
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                Presets.Clear();
-                foreach (var preset in presets)
-                {
-                    Presets.Add(preset);
-                }
-            } else
-            {
-                await Application.Current.MainPage.DisplayAlert("Error!", "There was an error retrieving user settings.", "Ok");
+                await Application.Current.MainPage.DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
             }
+            else
+            {
+                var presets = await firebase.GetUserPresetsAsync();
+                if (presets != null)
+                {
+                    Presets.Clear();
+                    foreach (var preset in presets)
+                    {
+                        Presets.Add(preset);
+                    }
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error!", "There was an error retrieving user settings.", "Ok");
+                }
+            }
+            
         }
 
         private async Task DeletePreset(Firebase.PresetData preset)
         {
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Application.Current.MainPage.DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
+                return;
+            }
+
             bool success = await firebase.DeleteUserPresetAsync(preset.Id);
             if (success)
             {
@@ -73,6 +88,12 @@ namespace MauiApp1.Classes.Models
 
         private async Task AddPreset()
         {
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Application.Current.MainPage.DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
+                return;
+            }
+
             string name = await Application.Current.MainPage.DisplayPromptAsync("New Preset", "Enter preset name:", "OK", "Cancel", "Preset Name");
             if (string.IsNullOrWhiteSpace(name))
                 return;
@@ -86,6 +107,11 @@ namespace MauiApp1.Classes.Models
 
         private async Task LoadPreset(Firebase.PresetData preset)
         {
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Application.Current.MainPage.DisplayAlert("No Internet", "Please check your internet connection and try again.", "OK");
+            }
+
             if (preset == null) return;
 
             firebase.LoadPreset(preset.Time, preset.Strength, preset.Position);
